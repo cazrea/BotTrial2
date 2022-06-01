@@ -7,14 +7,6 @@ app.get('/', (req, res) => res.send('Hello World!'));
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
 
-const MongoClient = require('mongodb').MongoClient;
-const mongo_username = process.env.MONGO_USERNAME
-const mongo_password = process.env.MONGO_PASSWORD
-
-const uri = `mongodb+srv://${mongo_username}:${mongo_password}@rawbeans.fb9azhr.mongodb.net/?retryWrites=true&w=majority`;
-const mclient = new MongoClient(uri, { useNewUrlParser: true });
-
-
 //Require Discord JS Framework
 const Discord = require('discord.js');
 
@@ -22,6 +14,10 @@ const Discord = require('discord.js');
 const client = new Discord.Client({ 
     intents: ["GUILDS", "GUILD_MESSAGES"] 
 });
+
+// Require Mongoose
+const mongoose = require('mongoose');
+
 
 //Collection of Commands & Events
 client.commands = new Discord.Collection();
@@ -31,6 +27,14 @@ client.events = new Discord.Collection();
 ['command_handler', 'event_handler'].forEach(handler => {
     require(`./handlers/${handler}`)(client, Discord);
 })
+
+mongoose.connect(process.env.MONGODB_SRV, {
+  useNewUrlParser: true,
+}).then(() => {
+  console.log('Successfully Connected to Database.');
+}).catch((err) => {
+  console.log('Connection failed.');
+});
 
 //Activities List
 const activities_list = [
