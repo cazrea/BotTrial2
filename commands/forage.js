@@ -12,7 +12,7 @@ module.exports = {
         if (talkedRecently.has(message.author.id)) {
 
             const cdforEmbed = new MessageEmbed()
-                    .setColor('#CD7F32')
+                    .setColor('#800020')
                     .setTitle(`Oops! ${message.author.username} send that too fast!`)
                     .setDescription(`Try again in 5 seconds`)
                     .setFooter({text: 'Use ~help to check out my commands!'});
