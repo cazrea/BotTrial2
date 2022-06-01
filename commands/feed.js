@@ -56,7 +56,7 @@ const animalReact = [
 module.exports = {
     name: 'feed',
     aliases: ["f", "fd"],
-    execute(cmessage, args, cmd, client, Discord, profileData) {
+    execute(message, args, cmd, client, Discord, profileData) {
         const channelID = ['980722586847707196','979817858370527292']
 
         var animalQty = +(args.slice(1).join(' '));
