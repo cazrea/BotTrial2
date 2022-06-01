@@ -18,7 +18,7 @@ module.exports = {
 
         const forageEmbed = new MessageEmbed()
           .setColor('#CD7F32')
-          .setTitle("Looking for some Brain Cells...")
+          .setTitle(`Looking for some Brain Cells for ${message.author.username}...`)
           .setDescription(`You acquired ${randomNum} brain cells.`)
           .setFooter({text: 'Use ~help to check out my commands!'});
 
