@@ -28,8 +28,12 @@ module.exports = {
         const greetEmbed = new MessageEmbed()
           .setColor('#CD7F32')
           .setTitle('Hello, thanks for inviting me!')
+          .addFields(
+            {value:"If you don't have a profile yet, every command will create one for you (for now)!"}
+          )
           .setDescription(greetings[randGreet])
-          .setFooter({text: 'Use ~help to check out my commands!'});
+
+          .setFooter({text: 'Use ~help to check out my other commands!'});
 
       message.channel.send({embeds: [greetEmbed]})
     }
