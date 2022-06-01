@@ -14,7 +14,7 @@ module.exports = {
             const cdforEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
                     .setTitle(`Oops! ${message.author.username} send that too fast!`)
-                    .setDescription(`Try again in 2 seconds`)
+                    .setDescription(`Try again in 5 seconds`)
                     .setFooter({text: 'Use ~help to check out my commands!'});
 
             message.channel.send({embeds: [cdforEmbed]});
@@ -43,7 +43,7 @@ module.exports = {
                 setTimeout(() => {
              // Removes the user from the set after a minute
                  talkedRecently.delete(message.author.id);
-                }, 2000);
+                }, 5000);
         }
 
     }
