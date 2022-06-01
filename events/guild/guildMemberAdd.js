@@ -5,7 +5,7 @@ module.exports = async(client, discord, member) => {
         userID: member.id,
         serverID: member.guild.id,
         BrainCells: 1,
-        bank: 0,
+        bank: 0
     });
     profile.save();
 }
