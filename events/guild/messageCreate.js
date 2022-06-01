@@ -29,6 +29,7 @@ module.exports = async (Discord, client, message) => {
     const cmd = args.shift().toLowerCase();
 
     const command = client.commands.get(cmd) || client.commands.find(alias => alias.aliases && alias.aliases.includes(cmd));
+    
     try {
         command.execute(message, args, cmd, client, Discord, profileData);
     } catch (err) {

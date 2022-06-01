@@ -5,7 +5,7 @@ const ms = require('ms');
 module.exports = {
     name: 'help',
     aliases: ["h", "hp"],
-    execute(client, message, args, Discord) {
+    execute(message, args, cmd, client, Discord, profileData) {
         const helpGuide = new MessageEmbed()
                 .setColor('#CD7F32')
                 .setTitle('Here are the list of codes and what they do!')

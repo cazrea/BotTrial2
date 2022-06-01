@@ -4,7 +4,7 @@ const messageCreate = require("../events/guild/messageCreate");
 module.exports = {
     name: 'join',
     aliases: ["start", "account"],
-    execute(client, message, args) {      
+    execute(message, args, cmd, client, Discord, profileData) {      
         const welcEmbed = new MessageEmbed()
           .setColor('#CD7F32')
           .setTitle('Hello!')

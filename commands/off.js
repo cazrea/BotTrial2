@@ -1,7 +1,7 @@
 module.exports = {
     name: 'off',
     aliases: ["o", "sd"],
-    execute(client, message, args, Discord) {
+    execute(message, args, cmd, client, Discord, profileData) {
         const robinRole = message.member.roles.cache
 
         if(robinRole.has('979797191239565344')) {

@@ -22,7 +22,7 @@ const greetings = [
 module.exports = {
     name: 'hello',
     aliases: ["hi", "bye"],
-    execute(client, message, args) {
+    execute(message, args, cmd, client, Discord, profileData) {
       var randGreet = Math.floor(Math.random() * greetings.length);
       
         const greetEmbed = new MessageEmbed()
