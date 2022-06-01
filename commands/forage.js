@@ -9,7 +9,7 @@ module.exports = {
     aliases: ['for', 'fg'],
     async execute(message, args, cmd, client, discord, profileData) {
 
-        if (talkedRecently.has(msg.author.id)) {
+        if (talkedRecently.has(message.author.id)) {
 
             const cdforEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
@@ -39,10 +39,10 @@ module.exports = {
                 message.channel.send({embeds: [forageEmbed]});
 
               // Adds the user to the set so that they can't talk for a minute
-                talkedRecently.add(msg.author.id);
+                talkedRecently.add(message.author.id);
                 setTimeout(() => {
              // Removes the user from the set after a minute
-                 talkedRecently.delete(msg.author.id);
+                 talkedRecently.delete(message.author.id);
                 }, 2000);
         }
 
