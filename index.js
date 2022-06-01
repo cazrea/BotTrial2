@@ -7,6 +7,14 @@ app.get('/', (req, res) => res.send('Hello World!'));
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
 
+const MongoClient = require('mongodb').MongoClient;
+const mongo_username = process.env.MONGO_USERNAME
+const mongo_password = process.env.MONGO_PASSWORD
+
+const uri = `mongodb+srv://${mongo_username}:${mongo_password}@rawbeans.fb9azhr.mongodb.net/?retryWrites=true&w=majority`;
+const mclient = new MongoClient(uri, { useNewUrlParser: true });
+
+
 //Require Discord JS Framework
 const Discord = require('discord.js');
 
