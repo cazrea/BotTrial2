@@ -1,4 +1,4 @@
-const { MessageEmbed, User } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const messageCreate = require("../events/guild/messageCreate");
 const ms = require('ms');
 
@@ -12,7 +12,7 @@ module.exports = {
           .setDescription(`You have ${profileData.BrainCells} on you and ${profileData.bank} stored.`)
           .setFooter({text: 'Use ~help to check out my commands!'});
 
-      message.channel.send({embeds: [greetEmbed]});
-
+          message.channel.send({embeds: [greetEmbed]});
     }
+        
 }
