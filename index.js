@@ -7,10 +7,6 @@ app.get('/', (req, res) => res.send('Hello World!'));
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
 
-//Require token
-const config = require('./config.json');
-
-
 //Require Discord JS Framework
 const Discord = require('discord.js');
 
@@ -43,4 +39,4 @@ client.on('ready', () => {
 });
 
 // Should be last code
-client.login(config.TOKEN)
+client.login(process.env.TOKEN)
