@@ -44,7 +44,7 @@ module.exports = {
                 userID: message.author.id,
                 }, {
                      $inc: {
-                     MBC: fItems.value,
+                     MBC: parseInt(fItems.value),
                      },
                 });
 

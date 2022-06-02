@@ -7,7 +7,6 @@ module.exports = async (message, args, cmd, client, Discord, profileData) => {
     //Message Codes
     if(!message.content.startsWith(prefix) || message.author.bot) return;
 
-    let profileData;
     try {
         profileData = await profileModel.findOne({
             userID: message.author.id
