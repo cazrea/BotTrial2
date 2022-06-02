@@ -8,18 +8,15 @@ module.exports = {
     async execute(message, args, cmd, client, discord, profileData) {
         const amount = args[0];
 
-        if (amount % 1 != 0 || amount <=0) 
-            return message.channel.send("Whole Number")
+        if (amount % 1 != 0 || amount <= 0) 
+            return message.channel.send("Whole Number");
 
         try {
-            if (amount > profileData.MBC) return message.channel.send("Not enough")
+            if (amount > profileData.MBC) return message.channel.send("Not enough");
 
             await profileModel.findOneAndUpdate(
-                {
-                    userID: message.author.id
-                }, 
-                {
-                    $inc: {
+                {userID: message.author.id}, 
+                {$inc: {
                         MBC: -amount,
                         MBBank: amount,
                         }
