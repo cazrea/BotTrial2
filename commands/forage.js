@@ -43,8 +43,8 @@ module.exports = {
                 const resp = await profileModel.findOneAndUpdate({
                 userID: message.author.id,
                 }, {
-                     $inc: {
-                     MBC: parseInt(fItems.value),
+                    //  $inc: {
+                    //  MBC: parseInt(fItems.value),
                      },
                 });
 
