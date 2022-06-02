@@ -1,7 +1,7 @@
 const { MessageEmbed, User } = require("discord.js");
 const messageCreate = require("../events/guild/messageCreate");
 const ms = require('ms');
-const profileModel = require('../../models/profileSchema');
+const profileModel = require("../models/profileSchema");
 
 
 module.exports = {
