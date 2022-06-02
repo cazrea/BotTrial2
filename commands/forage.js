@@ -56,7 +56,7 @@ module.exports = {
                 const forageEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
                     .setTitle(`Looking for some Brain Cells for ${message.author.username}...`)
-                    .setDescription(`You found some ${forageResult.name} and got ${forageResult.value} micro brain cell/s.`)
+                    .setDescription(`You found some ${forageResult} and got ${forageResult} micro brain cell/s.`)
                     .setFooter({text: 'Use ~help to check out my commands!'});
 
                 message.channel.send({embeds: [forageEmbed]});
