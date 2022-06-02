@@ -1,32 +1,32 @@
 const { MessageEmbed, User } = require("discord.js");
-const profileModel = require("../models/profileSchema");
+const profileModel = require("../../models/profileSchema");
 const ms = require('ms');
 
 module.exports = {
-    name: 'dMBC',
-    aliases: ['dM'],
-    async execute(message, args, cmd, client, discord, profileData) {
-        const amount = args[0];
+    name: 'dmbc',
+    aliases: ["dm", "mbcd"],
+    execute(message, args, cmd, client, Discord, profileData) {
+        const channelID = ['980722586847707196','979817858370527292']
+        var time = args[0];
 
-        if (amount % 1 != 0 || amount <= 0) 
-            return message.channel.send("Whole Number");
-
-        try {
-            if (amount > profileData.MBC) return message.channel.send("Not enough");
-
-            await profileModel.findOneAndUpdate(
-                {userID: message.author.id}, 
-                {$inc: {
-                        MBC: -amount,
-                        MBBank: amount,
-                        }
-                });  
-
-                return message.channel.send("deposit success");
-
-
-        } catch(err) {
-            console.log(err);
+        if (amount % 1 != 0 || amount <= 0) {
+                message.channel.send("whole number");
+            } 
+            
+            else if (amount > profileData.MBC) {
+                message.channel.send("not enough");
+            } 
+            
+            else {         
+                await profileModel.findOneAndUpdate(
+                    {userID: message.author.id}, 
+                    {$inc: {
+                            MBC: -amount,
+                            MBBank: amount,
+                            }
+                    });  
+    
+                    message.channel.send("deposit success");   
+            } 
         }
-    },
-};
+    }
