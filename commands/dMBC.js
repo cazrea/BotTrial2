@@ -9,25 +9,10 @@ module.exports = {
         const amount = args[0];
 
         if (amount % 1 != 0 || amount <=0) 
-            return 
-                const notAWholeNumEmbed = new MessageEmbed()
-                    .setColor('#800020')
-                    .setTitle('Oops! The transaction went wrong!')
-                    .setDescription('The number must be a whole number!')
-                    .setFooter({text: 'Do ~d MBC # again'});
-
-                message.channel.send({embeds: [notAWholeNumEmbed]});
+            return message.channel.send("Whole Number")
 
         try {
-            if (amount > profileData.MBC) 
-            return
-                const notEnoughEmbed = new MessageEmbed()
-                    .setColor('#800020')
-                    .setTitle(`Oh no, you don't have that many micro brain cells!`)
-                    .setDescription(`You currently have ${profileData.MBC} Micro Brain Cell/s available to deposit.`)
-                    .setFooter({text: 'Do ~d MBC # again'});
-
-                message.channel.send({embeds: [notEnoughEmbed]});
+            if (amount > profileData.MBC) return message.channel.send("Not enough")
 
             await profileModel.findOneAndUpdate(
                 {
@@ -39,13 +24,8 @@ module.exports = {
                         MBBank: amount,
                         }
                 });  
-                const sdMBCEmbed = new MessageEmbed()
-                    .setColor('#CD7F32')
-                    .setTitle(`Congrats!`)
-                    .setDescription(`You've successfully deposited ${amount} Micro Brain Cells into the Brain Bank!`)
-                    .setFooter({text: 'Check your ~balance to confirm.'});
 
-                return message.channel.send({embeds: [sdMBCEmbed]});
+                return message.channel.send("deposit success");
 
 
         } catch(err) {
