@@ -7,7 +7,7 @@ const profileModel = require("../models/profileSchema");
 module.exports = {
     name: 'wMBC',
     aliases: ['withdraw Micro Brain Cell', 'w Micro Brain Cell', 'w MBC'],
-    execute(message, args, cmd, client, Discord, profileData) {
+    async execute(message, args, cmd, client, Discord, profileData) {
         const amount = args[0];
 
         if(amount % 1 != 0 || amount <=0) {
