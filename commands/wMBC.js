@@ -43,7 +43,7 @@ module.exports = {
                     .setDescription(`You've successfully withdrawing ${amount} Micro Brain Cells from the Brain Bank!`)
                     .setFooter({text: 'Check your ~balance to confirm.'});
 
-                message.channel.send({embeds: [dBSuccEmbed]});   
+                message.channel.send({embeds: [dBSSuccEmbed]});   
             } 
         }
     }
