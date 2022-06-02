@@ -42,19 +42,21 @@ module.exports = {
 
             } else {
                 const randForage = Math.floor(Math.random() * fItems.length);
+                var forageResult = randForage;
+                
 
                 const resp = await profileModel.findOneAndUpdate({
                 userID: message.author.id,
                 }, {
                     $inc: {
-                    MBC: parseInt(fItems[randForage].value),
+                    MBC: 1,
                     },
                 });
 
                 const forageEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
                     .setTitle(`Looking for some Brain Cells for ${message.author.username}...`)
-                    .setDescription(`You found some ${fItems[randForage].name} and got ${fItems[randForage].value} micro brain cell/s.`)
+                    .setDescription(`You found some ${forageResult.name} and got ${forageResult.value} micro brain cell/s.`)
                     .setFooter({text: 'Use ~help to check out my commands!'});
 
                 message.channel.send({embeds: [forageEmbed]});
