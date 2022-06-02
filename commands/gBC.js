@@ -2,8 +2,8 @@ const profileModel = require("../models/profileSchema");
 const { MessageEmbed, User } = require("discord.js");
 
 module.exports = {
-    name: 'gm',
-    aliases: ['gmbc', "givembc"],
+    name: 'gb',
+    aliases: ['gbc', "givebc"],
     async execute(message, args, cmd, client, Discord, profileData) {
         
 
@@ -52,11 +52,11 @@ module.exports = {
         
                     message.channel.send({embeds: [notPersEmbed]});
         
-                } else if (amount > profileData.MBC) {
+                } else if (amount > profileData.BC) {
                     const tooManyEmbed = new MessageEmbed()
                         .setColor('#800020')
-                        .setTitle(`Oh no, you don't have that many Micro Brain Cells!`)
-                        .setDescription(`You currently have ${profileData.MBC} Micro Brain Cell/s available to deposit.`)
+                        .setTitle(`Oh no, you don't have that many Brain Cells!`)
+                        .setDescription(`You currently have ${profileData.BC} Micro Brain Cell/s available to deposit.`)
                         .setFooter({text: 'Try sending again.'});
     
                     message.channel.send({embeds: [tooManyEmbed]});
@@ -67,14 +67,14 @@ module.exports = {
                     await profileModel.findOneAndUpdate(
                         {userID: message.author.id},
                         {$inc: {
-                            MBC: -amount,
+                            BC: -amount,
                         }
                     });
         
                     await profileModel.findOneAndUpdate(
                         {userID: target.id},
                         {$inc: {
-                            MBC: amount,
+                            BC: amount,
                         }
                     });
         
