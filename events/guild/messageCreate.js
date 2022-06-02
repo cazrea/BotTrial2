@@ -1,5 +1,5 @@
 const profileModel = require('../../models/profileSchema');
-module.exports = async (Discord, client, message) => {
+module.exports = async (message, args, cmd, client, Discord, profileData) => {
     
     //Prefix
     const prefix = '~';
