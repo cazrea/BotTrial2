@@ -6,7 +6,7 @@ const profileModel = require("../models/profileSchema");
 
 module.exports = {
     name: 'dMBC',
-    aliases: ['deposit Micro Brain Cell', 'd Micro Brain Cell', 'd MBC'],
+    aliases: ['dM'],
     async execute(message, args, cmd, client, Discord, profileData) {
         const amount = args[0];
 

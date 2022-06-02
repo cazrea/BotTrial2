@@ -22,8 +22,6 @@ const fItems = [
     {name: 'Tangerine', value: -5},
 ];
 
-
-
 module.exports = {
     name: 'forage',
     aliases: ['for', 'fg'],
@@ -38,7 +36,6 @@ module.exports = {
                     .setFooter({text: 'Use ~help to check out my commands!'});
 
             message.channel.send({embeds: [cdforEmbed]});
-
 
             } else {
                 const randForage = Math.floor(Math.random() * fItems.length);
