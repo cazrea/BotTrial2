@@ -4,6 +4,24 @@ const messageCreate = require("../events/guild/messageCreate");
 const ms = require('ms');
 const talkedRecently = new Set();
 
+const fItems = [
+    {name: 'Juneberries', value: 5},
+    {name: 'Hazel nuts', value: 5},
+    {name: 'Chestnuts', value: 2},
+    {name: 'Walnuts', value: 2},
+    {name: 'Hops', value: 2},
+    {name: 'Cherries', value: 2},
+    {name: 'Limes', value: 2},
+    {name: 'Nettles', value: 2},
+    {name: 'Mulberries', value: 2},
+    {name: 'Oranges', value: 2},
+    {name: 'Apples', value: 2},
+    {name: 'Guava', value: 2},
+    {name: 'Elderberries', value: 2},
+    {name: 'Leaves', value: 1},
+    {name: 'Tangerine', value: -5},
+];
+
 module.exports = {
     name: 'forage',
     aliases: ['for', 'fg'],
@@ -21,19 +39,19 @@ module.exports = {
 
 
             } else {
-                const randomNum = Math.round(Math.random());
+                const randForage = Math.floor(Math.random() * fItems.length);
                 const resp = await profileModel.findOneAndUpdate({
                 userID: message.author.id,
                 }, {
                      $inc: {
-                     BrainCells: randomNum,
+                     MBC: fItems.value,
                      },
                 });
 
                 const forageEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
                     .setTitle(`Looking for some Brain Cells for ${message.author.username}...`)
-                    .setDescription(`You acquired ${randomNum} brain cells.`)
+                    .setDescription(`You found some ${fItems.name} and got ${fItems.value} micro brain cell/s.`)
                     .setFooter({text: 'Use ~help to check out my commands!'});
 
                 message.channel.send({embeds: [forageEmbed]});

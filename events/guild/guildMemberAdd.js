@@ -4,8 +4,11 @@ module.exports = async(client, discord, member) => {
     let profile = await profileModel.create({
         userID: member.id,
         serverID: member.guild.id,
-        BrainCells: 1,
-        bank: 0
+        MBC: 500,
+        BrainCells: 0,
+        bank: 0,
+        MBBank: 0,
+        food: 0,
     });
     profile.save();
 }

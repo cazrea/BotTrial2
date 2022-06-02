@@ -17,8 +17,11 @@ module.exports = async (Discord, client, message) => {
             let profile = await profileModel.create({
                 userID: message.author.id,
                 serverID: message.guild.id,
-                BrainCells: 1,
+                MBC: 500,
+                BrainCells: 0,
                 bank: 0,
+                MBBank: 0,
+                food: 0,
             });     
         }
     }catch(err){

@@ -1,5 +1,6 @@
 const { MessageEmbed, User } = require("discord.js");
 const messageCreate = require("../events/guild/messageCreate");
+const ms = require('ms');
 
 const greetings = [
   "I am scouting for animals!",
@@ -24,17 +25,17 @@ module.exports = {
     aliases: ["hi", "bye"],
     execute(message, args, cmd, client, Discord, profileData) {
       var randGreet = Math.floor(Math.random() * greetings.length);
-      
-        const greetEmbed = new MessageEmbed()
-          .setColor('#CD7F32')
-          .setTitle('Hello, thanks for inviting me!')
-          .addFields(
-            {value:"If you don't have a profile yet, every command will create one for you (for now)!"}
-          )
-          .setDescription(greetings[randGreet])
 
-          .setFooter({text: 'Use ~help to check out my other commands!'});
+      const hiEmbed = new MessageEmbed()
+      .setColor('#CD7F32')
+      .setTitle(`Hello, thanks for inviting me!`)
+      .setDescription(greetings[randGreet])
+      .addFields(
+        {name: 'Remember:', value: 'Start every command with the Tilde (~) symbol.'},
+        {name: 'Check your Brain Cells', value: 'Type ~bal to check how many you have!'},
+    )
+      .setFooter({text: 'Use ~help to check out my other commands!'});
 
-      message.channel.send({embeds: [greetEmbed]})
+      message.channel.send({embeds: [hiEmbed]});
     }
 };
