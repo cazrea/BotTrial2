@@ -3,44 +3,44 @@ const profileModel = require("../models/profileSchema");
 const ms = require('ms');
 
 module.exports = {
-    name: 'wmbc',
-    aliases: ["wm", "withdrawmbc"],
+    name: 'dbc',
+    aliases: ["db", "depositbc"],
     async execute(message, args, cmd, client, Discord, profileData) {
         var amount = args[0];
 
         if (amount % 1 != 0 || amount <= 0) {
-            const notAWholewNumEmbed = new MessageEmbed()
+            const notAWholeBNumEmbed = new MessageEmbed()
                 .setColor('#800020')
                 .setTitle('Oops! The transaction went wrong!')
                 .setDescription('The number must be a whole number!')
-                .setFooter({text: 'Try withdrawing again.'});
+                .setFooter({text: 'Try depositing again.'});
 
-            message.channel.send({embeds: [notAWholewNumEmbed]});
+            message.channel.send({embeds: [notAWholeBNumEmbed]});
             } 
             
-            else if (amount > profileData.MBBank) {
-                const tooManywEmbed = new MessageEmbed()
+            else if (amount > profileData.BrainCells) {
+                const tooManyBEmbed = new MessageEmbed()
                     .setColor('#800020')
-                    .setTitle(`Oh no, you don't have that many Micro Brain Cells!`)
-                    .setDescription(`You currently have ${profileData.MBBank} Micro Brain Cell/s available to withdraw.`)
-                    .setFooter({text: 'Try withdrawing again.'});
+                    .setTitle(`Oh no, you don't have that many Brain Cells!`)
+                    .setDescription(`You currently have ${profileData.BrainCells} Brain Cell/s available to deposit.`)
+                    .setFooter({text: 'Try depositing again.'});
 
-                message.channel.send({embeds: [tooManywEmbed]});
+                message.channel.send({embeds: [tooManyBEmbed]});
             } 
             
             else {         
                 await profileModel.findOneAndUpdate(
                     {userID: message.author.id}, 
                     {$inc: {
-                            MBC: amount,
-                            MBBank: -amount,
+                            BrainCells: -amount,
+                            bank: amount,
                             }
                     });  
     
                 const dBSSuccEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
                     .setTitle(`Congrats!`)
-                    .setDescription(`You've successfully withdrawing ${amount} Micro Brain Cells from the Brain Bank!`)
+                    .setDescription(`You've successfully deposited ${amount} Brain Cells into the Brain Bank!`)
                     .setFooter({text: 'Check your ~balance to confirm.'});
 
                 message.channel.send({embeds: [dBSuccEmbed]});   
