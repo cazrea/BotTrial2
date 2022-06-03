@@ -7,7 +7,7 @@ const profileSchema = new mongoose.Schema({
     bank: {type: Number},
     MBC: {type: Number, default: 500},
     MBBank: {type: Number},
-    food: {type: Number, default: 0}
+    food: {type: Number, default: 0}, 
 });
 
 const model = mongoose.model("Profile Models", profileSchema);
