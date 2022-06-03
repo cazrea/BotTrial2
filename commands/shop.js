@@ -26,7 +26,7 @@ module.exports = {
             }).join(`\n`);
 
             const seedsList = seeds.map((value, index) => {
-                return `${value.emoji} **${value.label} ${value.title}s** - ${value.price} MBC - ${value.value} ${value.title}`
+                return `${value.emoji} **${value.label}**  ${value.title}s - ${value.price} MBC - ${value.value} ${value.title}`
             }).join(`\n`);
 
             const suppliesList = supplies.map((value, index) => {
@@ -66,10 +66,10 @@ module.exports = {
                     //     name: 'Pets', 
                     //     value: utilitiesList
                     // },
-                    // {
-                    //     name: 'Brain Cells', 
-                    //     value: bcList
-                    // },
+                    {
+                        name: 'Brain Cells', 
+                        value: bcList
+                    },
                 )
                 .setFooter({text: 'Use ~help to check out my commands!'});
 

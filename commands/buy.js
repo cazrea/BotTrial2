@@ -18,9 +18,10 @@ module.exports = {
             message.channel.send('specify item');
 
         } else {
+
             const purchaseItem = args[0].toLowerCase;
-            const validItem = !!items.find((val) => val.items === purchaseItem).name;
-            const itemPrice = items.find((val) => val.items === purchaseItem).price;
+            const validItem = !!items.find(item => item.name === purchaseItem);
+            const itemPrice = items.find(item => item.name === purchaseItem).price;
 
             if (!validItem) {
 
@@ -32,7 +33,9 @@ module.exports = {
 
                 message.channel.send('no money for item')
 
-            } else {
+            } else 
+            
+            {
                 const params = {
                     Guild: message.guild.id,
                     User: message.author.id
@@ -70,6 +73,13 @@ module.exports = {
                         }).save();
                     }
                     message.channel.send('bought item');
+                });
+
+                await profileModel.findOneAndUpdate(
+                    {userID: message.author.id},
+                    {$inc: {
+                        BC: -itemPrice,
+                    }
                 });
             }
         }
