@@ -1,9 +1,10 @@
 module.exports = [
     {
-            name: 'Helper', 
+            name: 'Bee Helper', 
             price: 5000, 
             value: 1, 
-            title: "help"
+            title: "helper",
+            emoji: "🐝",
     },
 
 ]

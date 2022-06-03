@@ -1,8 +1,9 @@
 module.exports = [
     {
-            name: 'Brain Cell', 
+            name: 'Brain Cells', 
             price: 1000000, 
             value: 1, 
-            title: "Brain Cell"
+            title: "Brain Cell",
+            emoji: "🧠",
     },
 ]
