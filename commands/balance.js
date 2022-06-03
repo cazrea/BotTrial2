@@ -13,6 +13,7 @@ module.exports = {
           .addFields(
             {name: 'Micro Brain Cells', value: `You have ${profileData.MBC} Micro Brain Cells on you and ${profileData.MBBank} stored.`},
             {name: 'Brain Cells', value: `You have ${profileData.BrainCells} Brain Cells on you and ${profileData.bank} stored.`},
+            {name: 'Food', value: `You have ${profileData.food} stored.`},
             )
           .setFooter({text: 'Use ~help to check out my commands!'});
 

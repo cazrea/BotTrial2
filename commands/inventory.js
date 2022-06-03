@@ -16,8 +16,7 @@ module.exports = {
             if (!data) return message.channel.send('you have nothing'); 
             const mappedData = Object.keys(data.inventory).map((key) => {
                         return `**${key}** x(${data.inventory[key]})`;
-                    })
-                    
+                    })      
                     .join(`\n`);
 
             const invEmbed = new MessageEmbed()

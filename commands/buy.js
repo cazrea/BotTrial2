@@ -24,6 +24,7 @@ module.exports = {
                 message.channel.send(`no items found`)
             } else {
                 const itemPrice = items.find((item) => (item.name.toLowerCase()) === itemName).price;
+                const itemValue = items.find((item) => (item.name.toLowerCase()) === itemName).value;
 
                 if (itemPrice > profileData.MBC) {
 
@@ -34,11 +35,11 @@ module.exports = {
                         {userID: message.author.id},
                         {$inc: {
                             MBC: -itemPrice,
-                            food: itemPrice,
+                            food: itemValue,
                         }
                     });
 
-                    message.channel.send(`You bought ${itemName} for ${itemPrice} and have ${profileData.food} food`)
+                    message.channel.send(`You bought ${itemName} for ${itemPrice}`)
                 }
 
             }
