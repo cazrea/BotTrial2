@@ -54,22 +54,22 @@ module.exports = {
                         name: 'Seeds', 
                         value: seedsList
                     },
-                    {
-                        name: 'House Maintenance', 
-                        value: suppliesList
-                    },
-                    {
-                        name: 'Trees', 
-                        value: treesList
-                    },
-                    {
-                        name: 'Pets', 
-                        value: utilitiesList
-                    },
-                    {
-                        name: 'Brain Cells', 
-                        value: bcList
-                    },
+                    // {
+                    //     name: 'House Maintenance', 
+                    //     value: suppliesList
+                    // },
+                    // {
+                    //     name: 'Trees', 
+                    //     value: treesList
+                    // },
+                    // {
+                    //     name: 'Pets', 
+                    //     value: utilitiesList
+                    // },
+                    // {
+                    //     name: 'Brain Cells', 
+                    //     value: bcList
+                    // },
                 )
                 .setFooter({text: 'Use ~help to check out my commands!'});
 
