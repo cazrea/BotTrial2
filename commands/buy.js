@@ -19,12 +19,12 @@ module.exports = {
 
         } else {
 
-            const purchaseItem = args[0].toLowerCase;
-            const validItem = !!items.find(item => item.name === purchaseItem);
-            const itemPrice = items.find(item => item.name === purchaseItem).price;
+            const itemName = args[0].toLowerCase();
+            const purchasedItem = items.find(item => item.name.toLowerCase() === itemName);
+            const itemPrice = purchasedItem.price;
+            
 
-            if (!validItem) {
-
+            if (!!itemName) {
                 message.channel.send ('no items found')
 
             } else 

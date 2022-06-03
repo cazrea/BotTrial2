@@ -41,6 +41,10 @@ module.exports = {
                 return `${value.emoji} **${value.label} ${value.title}** - ${value.price} MBC - ${value.value} ${value.title}`
             }).join(`\n`);
 
+            const bcList = braincells.map((value, index) => {
+                return `${value.emoji} **${value.label} ${value.title}** - ${value.price} MBC - ${value.value} ${value.title}`
+            }).join(`\n`);
+
             const shopEmbed = new MessageEmbed()
                 .setColor('#CD7F32')
                 .setTitle('Welcome to my shop!')
