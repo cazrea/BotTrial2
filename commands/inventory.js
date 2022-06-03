@@ -18,7 +18,7 @@ module.export = {
             if (!data) {
                 message.channel.send('you have nothing')
             } else {
-                const mappedData = Object.keys(data.Inventory).map((key) => {
+                const mappedData = Object.keys(data.inventory).map((key) => {
                     return `${key}(${data.inventory[key]})`
                 }).join("/n");
 

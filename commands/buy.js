@@ -16,7 +16,7 @@ module.exports = {
         const validItem = !!items.find((val) => val.item.toLowerCase() === purchaseItem);
         const itemPrice = items.find((val) => val.item.toLowerCase() === purchaseItem).price;
 
-        if (!args[0]) {
+        if (!purchaseItem) {
             message.channel.send('no item');
         } else 
         
