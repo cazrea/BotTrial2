@@ -38,11 +38,11 @@ module.exports = {
             }).join(`\n`);
 
             const utilitiesList = utilities.map((value, index) => {
-                return `${value.emoji} **${value.label} ${value.title}** - ${value.price} MBC - ${value.value} ${value.title}`
+                return `${value.emoji} **${value.label}** ${value.title} - ${value.price} MBC - ${value.value} ${value.title}`
             }).join(`\n`);
 
             const bcList = braincells.map((value, index) => {
-                return `${value.emoji} **${value.label} ${value.title}** - ${value.price} MBC - ${value.value} ${value.title}`
+                return `${value.emoji} **${value.label}** - ${value.price} MBC - ${value.value} ${value.title}`
             }).join(`\n`);
 
             const shopEmbed = new MessageEmbed()
@@ -51,27 +51,30 @@ module.exports = {
                 .setDescription("Here are the available items!")
                 .addFields(
                     {
-                        name: 'Food Items', 
+                        name: 'Food Items || ~buy [bolded name]', 
                         value: foodList
                     },
+
                     {
-                        name: 'Seeds', 
-                        value: seedsList
-                    },
-                    {
-                        name: 'House Maintenance', 
+                        name: 'Maintenance || ~buy [bolded name]', 
                         value: suppliesList
                     },
+
                     {
-                        name: 'Trees', 
+                        name: 'Seeds || ~frm [bolded name]', 
+                        value: seedsList
+                    },
+
+                    {
+                        name: 'Trees || ~tree [bolded name]', 
                         value: treesList
                     },
                     {
-                        name: 'Pets', 
+                        name: 'Pets || ~buy [bolded name]', 
                         value: utilitiesList
                     },
                     {
-                        name: 'Brain Cells', 
+                        name: 'Brain Cells || ~buy [bolded name]', 
                         value: bcList
                     },
                 )

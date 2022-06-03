@@ -3,11 +3,11 @@ const messageCreate = require("../events/guild/messageCreate");
 const ms = require('ms');
 const profileModel = require("../models/profileSchema");
 const inventory = require("../models/inventorySchema");
-const items = require("../Store Items/trees");
+const items = require("../Store Items/utilityitems");
 
 
 module.exports = {
-    name: 'treeshop',
+    name: 'petshop',
     aliases: ['ts', 'tree'],
 
     async execute(message, args, cmd, client, discord, profileData) {
