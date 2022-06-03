@@ -1,6 +1,7 @@
 module.exports = [
     {
-            name: 'Mango Tree', 
+            name: 'mango',
+            label: 'Mango',
             price: 2000, 
             value: 1, 
             title: "tree",

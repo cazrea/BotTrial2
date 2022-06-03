@@ -18,27 +18,27 @@ module.exports = {
             message.channel.send('there are no items for sale')
         } else {
             const itemList = items.map((value, index) => {
-                return `${value.emoji} **${value.name}** - ${value.price} MBC - ${value.value} ${value.title}`
+                return `${value.emoji} **${value.label}** - ${value.price} MBC - ${value.value} ${value.title}`
             }).join(`\n`);
 
             const foodList = food.map((value, index) => {
-                return `${value.emoji} **${value.name}** - ${value.price} MBC - ${value.value} ${value.title}`
+                return `${value.emoji} **${value.label}** - ${value.price} MBC - ${value.value} ${value.title}`
             }).join(`\n`);
 
             const seedsList = seeds.map((value, index) => {
-                return `${value.emoji} **${value.name}** - ${value.price} MBC - ${value.value} ${value.title}`
+                return `${value.emoji} **${value.label} ${value.title}s** - ${value.price} MBC - ${value.value} ${value.title}`
             }).join(`\n`);
 
             const suppliesList = supplies.map((value, index) => {
-                return `${value.emoji} **${value.name}** - ${value.price} MBC - ${value.value} ${value.title}`
+                return `${value.emoji} **${value.label}** - ${value.price} MBC - ${value.value} ${value.title}`
             }).join(`\n`);
 
             const treesList = trees.map((value, index) => {
-                return `${value.emoji} **${value.name}** - ${value.price} MBC - ${value.value} ${value.title}`
+                return `${value.emoji} **${value.label} ${value.title}s** - ${value.price} MBC - ${value.value} ${value.title}`
             }).join(`\n`);
 
             const utilitiesList = utilities.map((value, index) => {
-                return `${value.emoji} **${value.name}** - ${value.price} MBC - ${value.value} ${value.title}`
+                return `${value.emoji} **${value.label} ${value.title}** - ${value.price} MBC - ${value.value} ${value.title}`
             }).join(`\n`);
 
             const shopEmbed = new MessageEmbed()

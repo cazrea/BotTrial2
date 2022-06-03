@@ -1,6 +1,7 @@
 module.exports = [
         {
-                name: 'Leaves', 
+                name: 'leaves',
+                label: 'Leaves',
                 price: 5, 
                 value: 1, 
                 title: "food",
@@ -8,7 +9,8 @@ module.exports = [
         },
 
         {
-                name: 'Berries', 
+                name: 'berries',
+                label: 'Berries',
                 price: 10, 
                 value: 3,  
                 title: "food",
@@ -16,7 +18,8 @@ module.exports = [
         },
 
         {
-                name: 'Fruit', 
+                name: 'fruit',
+                label: 'Fruit',
                 price: 12, 
                 value: 7, 
                 title: "food",
@@ -24,7 +27,8 @@ module.exports = [
         },
 
         {
-                name: 'Salad', 
+                name: 'salad',
+                label: 'Salad',
                 price: 15, 
                 value: 10, 
                 title: "food",
@@ -32,12 +36,12 @@ module.exports = [
         },
 
         {
-                name: 'Meal', 
+                name: 'meal',
+                label: 'Meal',
                 price: 20, 
                 value: 20, 
                 title: "food",
                 emoji: "🥪",
         },
-
 
 ]

@@ -12,13 +12,35 @@ module.exports = {
     aliases: ['b', 'by'],
 
     async execute(message, args, cmd, client, Discord, profileData) {
-        const purchaseItem = args[0];
-        const validItem = !!items.find((val) => val.items === purchaseItem).name;
-        const itemPrice = items.find((val) => val.items === purchaseItem).price;
+
+        if (!args[0]) {
+            message.channel.send('specify item')
+        } else {
+            const purchaseItem = args[0].toLowerCase;
+
+            const validItem = !!items.find((val) => val.items === purchaseItem).name;
+            if (!validItem) {
+                message.channel.send ('no items found')
+            } else {
+                const itemPrice = items.find((val) => val.items === purchaseItem).price;
+            }
+
+
+            
+
+        }
+
+        
+        
+        
+        
 
         if (!purchaseItem) {
             message.channel.send('no item');
-        } else 
+        };
+        
+        
+        
         
         if (!validItem) {
             message.channel.send('not valid item');

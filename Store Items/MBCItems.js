@@ -1,6 +1,7 @@
 module.exports = [
         {
-                name: 'Leaves', 
+                name: 'leaves',
+                label: 'Leaves',
                 price: 5, 
                 value: 1, 
                 title: "food",
@@ -8,7 +9,8 @@ module.exports = [
         },
 
         {
-                name: 'Berries', 
+                name: 'berries',
+                label: 'Berries',
                 price: 10, 
                 value: 3,  
                 title: "food",
@@ -16,7 +18,8 @@ module.exports = [
         },
 
         {
-                name: 'Fruit', 
+                name: 'fruit',
+                label: 'Fruit',
                 price: 12, 
                 value: 7, 
                 title: "food",
@@ -24,7 +27,8 @@ module.exports = [
         },
 
         {
-                name: 'Salad', 
+                name: 'salad',
+                label: 'Salad',
                 price: 15, 
                 value: 10, 
                 title: "food",
@@ -32,7 +36,8 @@ module.exports = [
         },
 
         {
-                name: 'Meal', 
+                name: 'meal',
+                label: 'Meal',
                 price: 20, 
                 value: 20, 
                 title: "food",
@@ -40,7 +45,8 @@ module.exports = [
         },
 
         {
-                name: 'Wild Seeds', 
+                name: 'wild',
+                label: 'Wild',
                 price: 10, 
                 value: 1, 
                 title: "seed",
@@ -48,7 +54,8 @@ module.exports = [
         },
 
         {
-                name: 'Carrot Seeds', 
+                name: 'carrot',
+                label: 'Carrot', 
                 price: 10, 
                 value: 1, 
                 title: "seed",
@@ -56,7 +63,8 @@ module.exports = [
         },
 
         {
-                name: 'Rice Seeds', 
+                name: 'rice',
+                label: 'Rice',
                 price: 10, 
                 value: 1, 
                 title: "seed",
@@ -64,7 +72,8 @@ module.exports = [
         },
 
         {
-                name: 'Cleaning Supplies', 
+                name: 'broom',
+                label: 'Broom',
                 price: 50, 
                 value: 1, 
                 title: "supply",
@@ -72,7 +81,8 @@ module.exports = [
         },
 
         {
-                name: 'Mango Tree', 
+                name: 'mango',
+                label: 'Mango',
                 price: 2000, 
                 value: 1, 
                 title: "tree",
@@ -80,7 +90,8 @@ module.exports = [
         },
 
         {
-                name: 'Helper', 
+                name: 'Bee',
+                label: 'bee',
                 price: 5000, 
                 value: 1, 
                 title: "helper",
