@@ -41,17 +41,9 @@ module.exports = {
                 return `${value.emoji} **${value.name}** - ${value.price} MBC - ${value.value} ${value.title}`
             }).join(`\n`);
 
-            const bcList = braincells.map((value, index) => {
-                return `${value.emoji} **${value.name}** - ${value.price} MBC - ${value.value} ${value.title}`
-            }).join(`\n`);
-
-            
-
-            message.channel.send(`${itemList}`);
-
             const shopEmbed = new MessageEmbed()
                 .setColor('#CD7F32')
-                .setTitle('Did you want to buy something?')
+                .setTitle('Welcome to my shop!')
                 .setDescription("Here are the available items!")
                 .addFields(
                     {
