@@ -1,4 +1,5 @@
 const profileModel = require('../../models/profileSchema');
+const invModel = require('../../models/inventorySchema')
 module.exports = async (Discord, client, message) => {
     
     //Prefix

@@ -1,36 +1,36 @@
 const { MessageEmbed, User } = require("discord.js");
-const messageCreate = require("../events/guild/messageCreate");
 const ms = require('ms');
-const profileModel = require("../models/profileSchema");
 const inventory = require("../models/inventorySchema");
 
-module.export = {
-    name: 'inventory',
-    aliases: ['inv', 'in'],
+module.exports = {
+    name: "inventory",
+    aliases: ["inv", "in"],
 
-    async export(message, args, cmd, client, Discord, profileData) {
+    async execute(message, args, cmd, client, discord, profileData) {
         inventory.findOne({
             Guild: message.guild.id,
             User: message.author.id,
         },
         
         async(err, data) => {
-            if (!data) {
-                message.channel.send('you have nothing')
-            } else {
-                const mappedData = Object.keys(data.inventory).map((key) => {
-                    return `${key}(${data.inventory[key]})`
-                }).join("/n");
+            if (!data) return message.channel.send('you have nothing'); 
+            const mappedData = Object.keys(data.inventory).map((key) => {
+                        return `**${key}** x(${data.inventory[key]})`;
+                    })
+                    
+                    .join(`\n`);
 
-                message.channel.send(mappedData);
-            }
-        }
+            const invEmbed = new MessageEmbed()
+                    .setColor('#CD7F32')
+                    .setTitle('Checking your Storage')
+                    .setDescription(mappedData)
+                    .setFooter({text: 'Use ~help to check out my commands!'});
 
-        )
+            message.channel.send({embeds: [invEmbed]});
 
-
-
-
+            }   
+        )    
         //end
+
     }
 }
