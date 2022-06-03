@@ -15,73 +15,72 @@ module.exports = {
 
         if (!args[0]) {
 
-            message.channel.send('specify item');
+            message.channel.send (`specify item`);
 
         } else {
-
             const itemName = args[0].toLowerCase();
-            const purchasedItem = items.find(item => item.name.toLowerCase() === itemName);
-            const itemPrice = purchasedItem.price;
+            const findItem = !!items.find((item) => item.name.toLowerCase() === itemName);
             
+            if (!findItem) {
+                message.channel.send(`no items found`)
+            } else {
+                const itemPrice = items.find((item) => (item.name.toLowerCase()) === itemName).price;
 
-            if (!!itemName) {
-                message.channel.send ('no items found')
+                if (itemPrice > profileData.MBC) {
 
-            } else 
-            
-            if (itemPrice > profileData.MBC) {
-
-                message.channel.send('no money for item')
-
-            } else 
-            
-            {
-                const params = {
-                    Guild: message.guild.id,
-                    User: message.author.id
-                }
+                    message.channel.send('not enough money for item')
     
-                inventory.findOne(params, async(err, data) => {
-                    if (data) {
-
-                        const haveItem = Object.keys(data.Inventory).includes(purchaseItem);
+                } else {
+                    const params = {
+                        Guild: message.guild.id,
+                        User: message.author.id
+                    }
+        
+                    inventory.findOne(params, async(err, data) => {
+                        if (data) {
     
-                        if(!haveItem) {
-
-                            data.Inventory[purchaseItem] = 1;
-
+                            const haveItem = Object.keys(data.inventory).includes(itemName);
+        
+                            if(!haveItem) {
+    
+                                data.inventory[itemName] = 1;
+    
+                            } else {
+    
+                                data.inventory[itemName]++
+    
+                            }
+    
+                            console.log(data);
+    
+                            await inventory.findOneAndUpdate(params, data);
+    
                         } else {
-
-                            data.Inventory[purchaseItem]++
-
+                            new inventory({
+    
+                                Guild: message.guild.id,
+                                User: message.author.id,
+                               
+                                inventory:{
+                                    [itemName]: 1,
+                                },
+                                    
+                            }).save();
                         }
+                        message.channel.send(`bought item for ${itemPrice}`);
+                    });
+    
+                    await profileModel.findOneAndUpdate(
+                        {userID: message.author.id},
+                        {$inc: {
+                            MBC: -itemPrice,
+                        }
+                    });
+                }
 
-                        console.log(data);
-
-                        await inventory.findOneAndUpdate(params, data);
-
-                    } else {
-                        new inventory({
-
-                            Guild: message.guild.id,
-                            User: message.author.id,
-                           
-                            inventory:{
-                                [purchaseItem]: 1,
-                            },
-                                
-                        }).save();
-                    }
-                    message.channel.send('bought item');
-                });
-
-                await profileModel.findOneAndUpdate(
-                    {userID: message.author.id},
-                    {$inc: {
-                        BC: -itemPrice,
-                    }
-                });
             }
+            
+
         }
         //end
     }
