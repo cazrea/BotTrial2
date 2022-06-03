@@ -3,7 +3,7 @@ const messageCreate = require("../events/guild/messageCreate");
 const ms = require('ms');
 const profileModel = require("../models/profileSchema");
 const inventory = require("../models/inventorySchema");
-const items = require("../Store Items/MBCItems");
+const items = require("../Store Items/fooditems");
 
 
 module.exports = {
@@ -38,7 +38,7 @@ module.exports = {
                         }
                     });
 
-                    message.channel.send(`You have ${profileData.food}`)
+                    message.channel.send(`You bought ${itemName} for ${itemPrice} and have ${profileData.food} food`)
                 }
 
             }
