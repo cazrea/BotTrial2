@@ -7,8 +7,8 @@ const items = require("../Store Items/fooditems");
 
 
 module.exports = {
-    name: 'buy',
-    aliases: ['b', 'by'],
+    name: 'food',
+    aliases: ['fd', 'bf'],
 
     async execute(message, args, cmd, client, discord, profileData) {
 

@@ -51,12 +51,12 @@ module.exports = {
                 .setDescription("Here are the available items!")
                 .addFields(
                     {
-                        name: 'Food Items || ~buy [bolded name]', 
+                        name: 'Food Items || ~food [bolded name]', 
                         value: foodList
                     },
 
                     {
-                        name: 'Maintenance || ~buy [bolded name]', 
+                        name: 'Maintenance || ~mnt [bolded name]', 
                         value: suppliesList
                     },
 
@@ -70,13 +70,13 @@ module.exports = {
                         value: treesList
                     },
                     {
-                        name: 'Pets || ~buy [bolded name]', 
+                        name: 'Pets || ~pet [bolded name]', 
                         value: utilitiesList
                     },
-                    {
-                        name: 'Brain Cells || ~buy [bolded name]', 
-                        value: bcList
-                    },
+                    // {
+                    //     name: 'Brain Cells || ~buy [bolded name]', 
+                    //     value: bcList
+                    // },
                 )
                 .setFooter({text: 'Use ~help to check out my commands!'});
 

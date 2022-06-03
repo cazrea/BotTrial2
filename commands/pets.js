@@ -8,7 +8,7 @@ const items = require("../Store Items/utilityitems");
 
 module.exports = {
     name: 'petshop',
-    aliases: ['ts', 'tree'],
+    aliases: ['pt', 'pet'],
 
     async execute(message, args, cmd, client, discord, profileData) {
 
