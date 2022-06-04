@@ -21,7 +21,7 @@ module.exports = {
             else if (amount > profileData.bank) {
                 const tooManywwEmbed = new MessageEmbed()
                     .setColor('#800020')
-                    .setTitle(`Oh no, you don't have that many Brain Cells!`)
+                    .setTitle(`Oh no, you don't have that many 🦠Brain Cells!`)
                     .setDescription(`You currently have ${profileData.bank} Brain Cell/s available to withdraw.`)
                     .setFooter({text: 'Try withdrawing again.'});
 
@@ -40,7 +40,7 @@ module.exports = {
                 const dBSSuccEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
                     .setTitle(`Congrats!`)
-                    .setDescription(`You've successfully withdrawing ${amount} Brain Cells from the Brain Bank!`)
+                    .setDescription(`You've successfully withdrawn 🦠${amount} Brain Cells from the Brain Bank!`)
                     .setFooter({text: 'Check your ~balance to confirm.'});
 
                 message.channel.send({embeds: [dBSSuccEmbed]});   

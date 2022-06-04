@@ -55,8 +55,8 @@ module.exports = {
                 } else if (amount > profileData.BC) {
                     const tooManyEmbed = new MessageEmbed()
                         .setColor('#800020')
-                        .setTitle(`Oh no, you don't have that many Brain Cells!`)
-                        .setDescription(`You currently have ${profileData.BC} Micro Brain Cell/s available to deposit.`)
+                        .setTitle(`Oh no, you don't have that many 🦠Brain Cells!`)
+                        .setDescription(`You currently have 🦠${profileData.BC} Brain Cell/s available to give.`)
                         .setFooter({text: 'Try sending again.'});
     
                     message.channel.send({embeds: [tooManyEmbed]});

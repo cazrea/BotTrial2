@@ -6,7 +6,7 @@ const talkedRecently = new Set();
 
 const fItems = [
     {name: 'Juneberries', value: 5},
-    {name: 'Hazel nuts', value: 5},
+    {name: 'Hazelnuts', value: 5},
     {name: 'Chestnuts', value: 2},
     {name: 'Walnuts', value: 2},
     {name: 'Hops', value: 2},
@@ -52,8 +52,8 @@ module.exports = {
 
                 const forageEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
-                    .setTitle(`Looking for some Brain Cells for ${message.author.username}...`)
-                    .setDescription(`You found some ${forageResult.name} and got ${forageResult.value} micro brain cell/s.`)
+                    .setTitle(`Looking for some 🧫 Micro Brain Cells for ${message.author.username}...`)
+                    .setDescription(`You found some ${forageResult.name} and got ${forageResult.value} 🧫MBC.`)
                     .setFooter({text: 'Use ~help to check out my commands!'});
 
                 message.channel.send({embeds: [forageEmbed]});

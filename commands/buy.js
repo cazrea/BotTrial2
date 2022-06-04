@@ -14,21 +14,40 @@ module.exports = {
 
         if (!args[0]) {
 
-            message.channel.send (`specify item`);
+            const  noItemEmbed = new MessageEmbed()
+                .setColor('#800020')
+                .setTitle('Hmm...')
+                .setDescription(`What did you wanna buy?`)
+                .setFooter({text: 'Check the ~shop list!'});
+
+            message.channel.send({embeds: [noItemEmbed]});
 
         } else {
             const itemName = args[0].toLowerCase();
             const findItem = !!items.find((item) => item.name.toLowerCase() === itemName);
             
             if (!findItem) {
-                message.channel.send(`no items found`)
+                const  noExistEmbed = new MessageEmbed()
+                    .setColor('#800020')
+                    .setTitle('Hmm...')
+                    .setDescription(`I don't think that's available.`)
+                    .setFooter({text: 'Check the ~shop list!'});
+
+                message.channel.send({embeds: [noExistEmbed]});
+
             } else {
                 const itemPrice = items.find((item) => (item.name.toLowerCase()) === itemName).price;
                 const itemValue = items.find((item) => (item.name.toLowerCase()) === itemName).value;
 
                 if (itemPrice > profileData.MBC) {
 
-                    message.channel.send('not enough money for item')
+                    const  notEnoughEmbed = new MessageEmbed()
+                        .setColor('#800020')
+                        .setTitle('Oh no!')
+                        .setDescription(`You don't have enough 🧫MBC for this! You only have 🧫${profileData.MBC} but needed 🧫${itemPrice}...`)
+                        .setFooter({text: 'Check your ~bal!'});
+
+                    message.channel.send({embeds: [notEnoughEmbed]});
     
                 } else {
                     await profileModel.findOneAndUpdate(
@@ -39,7 +58,13 @@ module.exports = {
                         }
                     });
 
-                    message.channel.send(`You bought ${itemName} for ${itemPrice}`)
+                    const  boughtEmbed = new MessageEmbed()
+                        .setColor('#CD7F32')
+                        .setTitle('Congrats!')
+                        .setDescription(`You bought ${itemName} for 🧫${itemPrice}!`)
+                        .setFooter({text: 'Please check your inventory by typing ~inv!'});
+
+                    message.channel.send({embeds: [boughtEmbed]});
                 }
 
             }

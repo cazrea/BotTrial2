@@ -22,7 +22,7 @@ module.exports = {
                 const tooManywEmbed = new MessageEmbed()
                     .setColor('#800020')
                     .setTitle(`Oh no, you don't have that many Micro Brain Cells!`)
-                    .setDescription(`You currently have ${profileData.MBBank} Micro Brain Cell/s available to withdraw.`)
+                    .setDescription(`You currently have 🧫${profileData.MBBank} Micro Brain Cell/s available to withdraw.`)
                     .setFooter({text: 'Try withdrawing again.'});
 
                 message.channel.send({embeds: [tooManywEmbed]});
@@ -40,7 +40,7 @@ module.exports = {
                 const dBSSuccEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
                     .setTitle(`Congrats!`)
-                    .setDescription(`You've successfully withdrawing ${amount} Micro Brain Cells from the Brain Bank!`)
+                    .setDescription(`You've successfully withdrawn 🧫${amount} Micro Brain Cells from the Brain Bank!`)
                     .setFooter({text: 'Check your ~balance to confirm.'});
 
                 message.channel.send({embeds: [dBSSuccEmbed]});   

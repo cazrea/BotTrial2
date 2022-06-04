@@ -1,6 +1,7 @@
 const { MessageEmbed, User } = require("discord.js");
 const messageCreate = require("../events/guild/messageCreate");
 const ms = require('ms');
+const profileModel = require("../models/profileSchema");
 
 const inter1 = '🍋';
 const inter2 = '🍑';
@@ -42,16 +43,16 @@ const wildColors = [
     '#FAA0A0', // pastel red
 ]
 
-const animalReact = [
-    'It did not like that!',
-    'It was not fond of it.',
-    'It liked that!',
-    'It might love you already.',
-    'It seemed like it wanted more.',
-    'It ignored you.',
-    'It seems like it is having fun!',
-    'It did not care much of that.',
-]
+// const animalReact = [
+//     'It did not like that!',
+//     'It was not fond of it.',
+//     'It liked that!',
+//     'It might love you already.',
+//     'It seemed like it wanted more.',
+//     'It ignored you.',
+//     'It seems like it is having fun!',
+//     'It did not care much of that.',
+// ]
 
 module.exports = {
     name: 'feed',
@@ -63,58 +64,79 @@ module.exports = {
         var time = +(args[0]);
         var timeRun = 0;
 
-        const noTimeEmbed = new MessageEmbed()
-            .setColor('#800020')
-            .setTitle('Please fill up Autofeeders!')
-            .setDescription('How often will the autofeeders give food?')
-            .setFooter({text: 'Use ~feed (time in seconds) (how many portions)'});
-
-        const noqtyEmbed = new MessageEmbed()
-            .setColor('#800020')
-            .setTitle('Please fill up Autofeeders!')
-            .setDescription('How much food you give?')
-            .setFooter({text: 'Use ~feed (time in seconds) (how many portions)'});
-
-        const nobothEmbed = new MessageEmbed()
-            .setColor('#800020')
-            .setTitle('Please fill up Autofeeders!')
-            .setDescription('How much food you give and how long for?')
-            .setFooter({text: 'Use ~feed (time in seconds) (how many portions)'});
-
-
         if (!time && !animalQty) {
+                const nobothEmbed = new MessageEmbed()
+                    .setColor('#800020')
+                    .setTitle('Please fill up Autofeeders!')
+                    .setDescription('How much food you give and how long for?')
+                    .setFooter({text: 'Use ~feed (time in seconds) (how many portions)'});
                 message.channel.send({embeds:[nobothEmbed]});
-            } 
-            
-            else if (!time || isNaN(time)) {
+            } else
+
+            if (!time || isNaN(time)) {
+                const noTimeEmbed = new MessageEmbed()
+                    .setColor('#800020')
+                    .setTitle('Please fill up Autofeeders!')
+                    .setDescription('How often will the autofeeders give food?')
+                    .setFooter({text: 'Use ~feed (time in seconds) (how many portions)'});
                 message.channel.send({embeds:[noTimeEmbed]});
-            } 
+            } else 
             
-            else if (!animalQty || isNaN(animalQty)) {         
+            if (!animalQty || isNaN(animalQty)) {         
+                const noqtyEmbed = new MessageEmbed()
+                    .setColor('#800020')
+                    .setTitle('Please fill up Autofeeders!')
+                    .setDescription('How much food you give?')
+                    .setFooter({text: 'Use ~feed (time in seconds) (how many portions)'});
+
                 message.channel.send({embeds:[noqtyEmbed]});   
-            } 
+            } else 
             
-            else if (time && animalQty) {
+            if (animalQty > profileData.food) {
+                const noEnfoodEmbed = new MessageEmbed()
+                    .setColor('#800020')
+                    .setTitle('Please buy food!')
+                    .setDescription(`You tried to fill the autofeeder with 🥮${animalQty} food, but only have 🥮${profileData.food} available.`)
+                    .setFooter({text: 'Use ~shop to buy more!'});
+
+                message.channel.send({embeds:[noEnfoodEmbed]});  
+
+            } else {
+
+                await profileModel.findOneAndUpdate({
+                    userID: message.author.id,
+                    }, {
+                        $inc: {
+                        MBC: parseInt(randMBC),
+                        food: -animalQty,
+                        },
+                    });
+
                 var animalInterval = setInterval(animalTimer, ms(time +'s'));
     
                 async function animalTimer() {
                     var randomAnimal = Math.floor(Math.random() * animalpics.length);
                     var randomDesc = Math.floor(Math.random() * Description.length);
                     var randomClr = Math.floor(Math.random() * wildColors.length);
+                    const randMBC = Math.floor(Math.random() * 25) + 5;
+    
     
                     const spawnAnimal = new MessageEmbed()
                     .setColor(wildColors[randomClr])
-                    .setTitle('A New Visitor has Arrived')
+                    .setTitle(`A New Visitor for ${message.author.username} has Arrived`)
                     .setDescription(Description[randomAnimal])
                     .setImage(animalpics[randomDesc])
-                    .setFooter({text: 'Please be gentle!'});
+                    .setFooter({text: `Congrats! ${message.author.username} gained 🧫${randMBC} MBC!`});
+
+                    message.channel.send({embeds:[spawnAnimal]});  
+
     
                     if (++timeRun === parseInt(animalQty)) {
                         clearInterval(animalInterval);
                         const noFood = new MessageEmbed ()
                         .setColor('#800020')
                         .setTitle('The feeder is empty!')
-                        .setDescription('Please refill the feeder.')
+                        .setDescription(`Please refill the feeder.`)
                         .setFooter({text: 'Use ~feed (time in s) (portions) again.'});
                         
                         setTimeout(function (){
@@ -122,10 +144,10 @@ module.exports = {
                         }, 5000);       
                     };
                 
-                    let messageEmbed = await message.channel.send({embeds:[spawnAnimal]});
-                    messageEmbed.react(inter1);
-                    messageEmbed.react(inter2);
-                    messageEmbed.react(inter3);
+                    // let messageEmbed = await message.channel.send({embeds:[spawnAnimal]});
+                    // messageEmbed.react(inter1);
+                    // messageEmbed.react(inter2);
+                    // messageEmbed.react(inter3);
                     
                 }  
     

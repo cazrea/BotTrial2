@@ -56,7 +56,7 @@ module.exports = {
                     const tooManyEmbed = new MessageEmbed()
                         .setColor('#800020')
                         .setTitle(`Oh no, you don't have that many Micro Brain Cells!`)
-                        .setDescription(`You currently have ${profileData.MBC} Micro Brain Cell/s available to deposit.`)
+                        .setDescription(`You currently have 🧫${profileData.MBC} Micro Brain Cell/s available to give.`)
                         .setFooter({text: 'Try sending again.'});
     
                     message.channel.send({embeds: [tooManyEmbed]});

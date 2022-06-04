@@ -22,7 +22,7 @@ module.exports = {
                 const tooManyBEmbed = new MessageEmbed()
                     .setColor('#800020')
                     .setTitle(`Oh no, you don't have that many Brain Cells!`)
-                    .setDescription(`You currently have ${profileData.BrainCells} Brain Cell/s available to deposit.`)
+                    .setDescription(`You currently have 🦠${profileData.BrainCells} Brain Cell/s available to deposit.`)
                     .setFooter({text: 'Try depositing again.'});
 
                 message.channel.send({embeds: [tooManyBEmbed]});
@@ -40,7 +40,7 @@ module.exports = {
                 const dBSSuccEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
                     .setTitle(`Congrats!`)
-                    .setDescription(`You've successfully deposited ${amount} Brain Cells into the Brain Bank!`)
+                    .setDescription(`You've successfully deposited  🦠${amount} Brain Cells into the Brain Bank!`)
                     .setFooter({text: 'Check your ~balance to confirm.'});
 
                 message.channel.send({embeds: [dBSuccEmbed]});   
