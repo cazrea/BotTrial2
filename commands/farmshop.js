@@ -11,8 +11,10 @@ module.exports = {
     aliases: ['fs', 'frm'],
 
     async execute(message, args, cmd, client, discord, profileData) {
+        var farmQty = +(args.slice(1).join(' '));
+        var farmItem = args[0];
 
-        if (!args[0]) {
+        if (!farmItem) {
 
             const  noItemEmbed = new MessageEmbed()
                 .setColor('#800020')
@@ -22,7 +24,21 @@ module.exports = {
 
             message.channel.send({embeds: [noItemEmbed]});
 
-        } else {
+        } else 
+        
+        if (!farmQty || farmQty < 1) {
+
+            const  noQtyEmbed = new MessageEmbed()
+                .setColor('#800020')
+                .setTitle('Hmm...')
+                .setDescription(`How many did you wanna buy?`)
+                .setFooter({text: 'Start from 1!'});
+
+            message.channel.send({embeds: [noQtyEmbed]});
+
+        } else
+        
+        {
             const itemName = args[0].toLowerCase();
             const findItem = !!items.find((item) => item.name.toLowerCase() === itemName);
             
@@ -39,12 +55,14 @@ module.exports = {
             } else {
                 const itemPrice = items.find((item) => (item.name.toLowerCase()) === itemName).price;
 
-                if (itemPrice > profileData.MBC) {
+                var itemTotal = itemPrice * farmQty;
+
+                if (itemTotal > profileData.MBC) {
 
                     const  notEnoughEmbed = new MessageEmbed()
                         .setColor('#800020')
                         .setTitle('Oh no!')
-                        .setDescription(`You don't have enough 🧫MBC for this! You only have 🧫${profileData.MBC} but needed 🧫${itemPrice}...`)
+                        .setDescription(`You don't have enough 🧫MBC for this! You only have 🧫${profileData.MBC} but needed 🧫${itemTotal}...`)
                         .setFooter({text: 'Check your ~bal!'});
 
                     message.channel.send({embeds: [notEnoughEmbed]});
@@ -62,11 +80,11 @@ module.exports = {
         
                             if(!haveItem) {
     
-                                data.inventory[itemName] = 1;
+                                data.inventory[itemName] = farmQty;
     
                             } else {
     
-                                data.inventory[itemName]++
+                                data.inventory[itemName] + farmQty;
     
                             }
     
@@ -81,7 +99,7 @@ module.exports = {
                                 User: message.author.id,
                                
                                 inventory:{
-                                    [itemName]: 1,
+                                    [itemName]: farmQty,
                                 },
                                     
                             }).save();
@@ -90,7 +108,7 @@ module.exports = {
                         const  boughtEmbed = new MessageEmbed()
                         .setColor('#CD7F32')
                         .setTitle('Congrats!')
-                        .setDescription(`You bought ${itemName} for 🧫${itemPrice}!`)
+                        .setDescription(`You bought ${itemName} ${value.title} (x${farmQty}) for 🧫${itemTotal}!`)
                         .setFooter({text: 'Please check your inventory by typing ~inv!'});
 
                         message.channel.send({embeds: [boughtEmbed]});
@@ -99,7 +117,7 @@ module.exports = {
                     await profileModel.findOneAndUpdate(
                         {userID: message.author.id},
                         {$inc: {
-                            MBC: -itemPrice,
+                            MBC: -itemTotal,
                         }
                     });
                 }

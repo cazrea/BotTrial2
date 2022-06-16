@@ -63,7 +63,7 @@ module.exports = {
                     const  notEnoughEmbed = new MessageEmbed()
                         .setColor('#800020')
                         .setTitle('Oh no!')
-                        .setDescription(`You don't have enough 🧫MBC for this! You only have 🧫${profileData.MBC} but needed 🧫${itemPrice}...`)
+                        .setDescription(`You don't have enough 🧫MBC for this! You only have 🧫${profileData.MBC} but needed 🧫${itemTotal}...`)
                         .setFooter({text: 'Check your ~bal!'});
 
                     message.channel.send({embeds: [notEnoughEmbed]});
@@ -80,8 +80,8 @@ module.exports = {
                     const  boughtEmbed = new MessageEmbed()
                         .setColor('#CD7F32')
                         .setTitle('Congrats!')
-                        .setDescription(`You bought ${itemName} for 🧫${itemPrice}!`)
-                        .setFooter({text: 'Please check your inventory by typing ~inv!'});
+                        .setDescription(`You bought ${itemName} for 🧫${itemTotal}!`)
+                        .setFooter({text: 'Please check how much food you have by typing ~bal!'});
 
                     message.channel.send({embeds: [boughtEmbed]});
                 }
