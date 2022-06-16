@@ -11,8 +11,10 @@ module.exports = {
     aliases: ['fd', 'bf'],
 
     async execute(message, args, cmd, client, discord, profileData) {
+        var foodQty = +(args.slice(1).join(' '));
+        var foodItem = args[0];
 
-        if (!args[0]) {
+        if (!foodItem) {
 
             const  noItemEmbed = new MessageEmbed()
                 .setColor('#800020')
@@ -22,7 +24,21 @@ module.exports = {
 
             message.channel.send({embeds: [noItemEmbed]});
 
-        } else {
+        } else 
+
+        if (!foodQty || foodQty < 1) {
+
+            const  noQtyEmbed = new MessageEmbed()
+                .setColor('#800020')
+                .setTitle('Hmm...')
+                .setDescription(`How many did you wanna buy?`)
+                .setFooter({text: 'Start from 1!'});
+
+            message.channel.send({embeds: [noQtyEmbed]});
+
+        } else
+                
+        {
             const itemName = args[0].toLowerCase();
             const findItem = !!items.find((item) => item.name.toLowerCase() === itemName);
             
@@ -39,7 +55,10 @@ module.exports = {
                 const itemPrice = items.find((item) => (item.name.toLowerCase()) === itemName).price;
                 const itemValue = items.find((item) => (item.name.toLowerCase()) === itemName).value;
 
-                if (itemPrice > profileData.MBC) {
+                var itemTotal = itemPrice * foodQty;
+                var foodTotal = itemValue * foodQty;
+
+                if (itemTotal > profileData.MBC) {
 
                     const  notEnoughEmbed = new MessageEmbed()
                         .setColor('#800020')
@@ -53,8 +72,8 @@ module.exports = {
                     await profileModel.findOneAndUpdate(
                         {userID: message.author.id},
                         {$inc: {
-                            MBC: -itemPrice,
-                            food: itemValue,
+                            MBC: -itemTotal,
+                            food: foodTotal,
                         }
                     });
 

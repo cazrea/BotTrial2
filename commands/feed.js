@@ -57,7 +57,7 @@ const wildColors = [
 module.exports = {
     name: 'feed',
     aliases: ["f", "fd"],
-    execute(message, args, cmd, client, Discord, profileData) {
+    async execute(message, args, cmd, client, Discord, profileData) {
         const channelID = ['980722586847707196','979817858370527292']
 
         var animalQty = +(args.slice(1).join(' '));
@@ -102,12 +102,10 @@ module.exports = {
                 message.channel.send({embeds:[noEnfoodEmbed]});  
 
             } else {
-
                 await profileModel.findOneAndUpdate({
                     userID: message.author.id,
                     }, {
                         $inc: {
-                        MBC: parseInt(randMBC),
                         food: -animalQty,
                         },
                     });
@@ -118,9 +116,8 @@ module.exports = {
                     var randomAnimal = Math.floor(Math.random() * animalpics.length);
                     var randomDesc = Math.floor(Math.random() * Description.length);
                     var randomClr = Math.floor(Math.random() * wildColors.length);
-                    const randMBC = Math.floor(Math.random() * 25) + 5;
-    
-    
+                    const randMBC = Math.floor(Math.random() * 10) + 5;
+
                     const spawnAnimal = new MessageEmbed()
                     .setColor(wildColors[randomClr])
                     .setTitle(`A New Visitor for ${message.author.username} has Arrived`)
@@ -128,7 +125,15 @@ module.exports = {
                     .setImage(animalpics[randomDesc])
                     .setFooter({text: `Congrats! ${message.author.username} gained 🧫${randMBC} MBC!`});
 
-                    message.channel.send({embeds:[spawnAnimal]});  
+                    message.channel.send({embeds:[spawnAnimal]}); 
+
+                    await profileModel.findOneAndUpdate({
+                        userID: message.author.id,
+                        }, {
+                            $inc: {
+                            MBC: parseInt(randMBC),
+                            },
+                        });
 
     
                     if (++timeRun === parseInt(animalQty)) {
