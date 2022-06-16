@@ -43,5 +43,21 @@ module.exports = [
                 title: "food",
                 emoji: "🥪",
         },
+        {
+                name: 'cart',
+                label: 'Cart',
+                price: 40, 
+                value: 50, 
+                title: "food",
+                emoji: "🛒",
+        },
+        {
+                name: 'box',
+                label: 'Box',
+                price: 50, 
+                value: 100, 
+                title: "food",
+                emoji: "📦",
+        },
 
 ]
