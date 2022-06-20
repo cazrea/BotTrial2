@@ -76,7 +76,7 @@ module.exports = {
                             // Removes the user from the set & sends a message once they can do it again
 
                              setTimeout(() => {
-                                plantedRecently.delete(message.author.id);
+                                choredRecently.delete(message.author.id);
                                 message.author.send(`Hello! You can do chores again!`)
                             }, hourTime)
     

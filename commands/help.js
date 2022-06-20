@@ -40,10 +40,12 @@ module.exports = {
 
         const gameGuide = new MessageEmbed()
                 .setColor('#8A9A5B')
-                .setTitle('🦄 Wildlife Commands 🦄')
+                .setTitle('🦄 Wildlife & House Commands 🦄')
                 .addFields(
                     {name: '~forage, ~for, ~fg', value: 'Forage the forest to gain more 🧫Micro Brain Cells.'},
-                    {name: '~feed (# time in s) (# of food portions)', value: 'Sets up the autofeeders for visitors. You can use f or fd instead of feed.'},                  
+                    {name: '~feed (# time in s) (# of food portions)', value: 'Sets up the autofeeders for visitors. You can use f or fd instead of feed.'},
+                    {name: '~plant name, ~plt name, ~pt name', value: 'Plants a seed of your choice that grows into 🥮Food.'},
+                    {name: '~chores name, ~chr name, ~ch name', value: 'Use a maintenance tool to do chores that will give you 🧫Micro Brain Cells.'},                           
                 )
                 .setFooter({text: 'Remember to always put ~ before the command!'});
 
@@ -55,10 +57,10 @@ module.exports = {
         .addFields(
             {name: '~shop, ~sh, ~store', value: 'List of all items'},
             {name: '~food name, ~fd name, ~bf name', value: 'Buy food at the shop!'},
-            {name: '~farmshop name, ~frm name, ~fs name', value: 'Buy farming items at the warehouse! *item non-functional'},
+            {name: '~farmshop name, ~frm name, ~fs name', value: 'Buy farming items at the warehouse!'},
             {name: '~treeshop name, ~tree name, ~ts name', value: 'Buy trees at the plant nursery! *item non-functional'},
             {name: '~petshop name, ~pet name, ~ps name', value: 'Buy helpers at the pet shop! *item non-functional'},
-            {name: '~maintenance name, ~maint name, ~mnt name', value: 'Buy supplies at the grocery! *item non-functional'},           
+            {name: '~maintenance name, ~maint name, ~mnt name', value: 'Buy supplies at the grocery!'},           
             {name: 'BC Store', value: 'Still being set up!'},             
         )
         .setFooter({text: 'Remember to always put ~ before the command!'});

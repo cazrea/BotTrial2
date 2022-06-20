@@ -2,7 +2,7 @@ module.exports = [
         {
                 name: 'carrot',
                 label: 'Carrot', 
-                price: 10, 
+                price: 50, 
                 value: 1, 
                 title: "seed",
                 emoji: "🥕",
@@ -11,7 +11,7 @@ module.exports = [
         {
                 name: 'rice',
                 label: 'Rice',
-                price: 10, 
+                price: 50, 
                 value: 1, 
                 title: "seed",
                 emoji: "🍚",

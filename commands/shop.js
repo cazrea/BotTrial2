@@ -1,7 +1,6 @@
 const { MessageEmbed, User } = require("discord.js");
 const profileModel = require("../models/profileSchema");
 const ms = require('ms');
-const items = require("../Store Items/MBCItems");
 const food = require("../Store Items/fooditems");
 const seeds = require("../Store Items/seeds");
 const supplies = require("../Store Items/Cleaningitems");
@@ -17,10 +16,6 @@ module.exports = {
         if (items.length === 0) {
             message.channel.send('there are no items for sale')
         } else {
-            const itemList = items.map((value, index) => {
-                return `${value.emoji} **${value.label}** - ${value.price} MBC - ${value.value} ${value.title}`
-            }).join(`\n`);
-
             const foodList = food.map((value, index) => {
                 return `${value.emoji} **${value.label}** - ${value.price} MBC - ${value.value} ${value.title}`
             }).join(`\n`);
