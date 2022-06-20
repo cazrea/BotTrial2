@@ -27,12 +27,25 @@ module.exports = {
 
                 if (!itemName) {
 
-                    message.channel.send("what tool did you want to use?")
+                    const whatToolEmbed = new MessageEmbed()
+                    .setColor('#800020')
+                    .setTitle(`Hmm...`)
+                    .setDescription(`What tool did you want to use, ${message.member.displayName}`)
+                    .setFooter({text: 'Use ~inv to check out your inventory!'});
+
+                    message.channel.send({embeds: [whatToolEmbed]});
 
                 } else  
                 
                 if (!findItem) {
-                    message.channel.send("no cleaning item like that exists")
+
+                    const noToolEmbed = new MessageEmbed()
+                    .setColor('#800020')
+                    .setTitle(`Hmm...`)
+                    .setDescription(`That isn't a tool you can use, ${message.member.displayName}`)
+                    .setFooter({text: `Use ~shop to check what's available!`});
+
+                    message.channel.send({embeds: [noToolEmbed]});
 
                 } else {
                     const params = {
@@ -45,14 +58,28 @@ module.exports = {
                             const haveItem = Object.keys(data.inventory).includes(itemName);
         
                             if(!haveItem) {
+
+                               const notOnHandEmbed = new MessageEmbed()
+                                .setColor('#800020')
+                                .setTitle(`Sorry, ${message.member.displayName}!`)
+                                .setDescription(`You don't have that in your storage.`)
+                                .setFooter({text: `Use ~inv to see what's in your storage or ~shop to buy some!`});
+            
+                                message.channel.send({embeds: [notOnHandEmbed]});
     
-                                message.channel.send(`You don't have any ${itemName}s! Maybe you should buy from the shop.`)
     
                             } else 
                             
                             if (data.inventory[itemName] < 1) {
 
-                                message.channel.send(`You don't have any ${itemName}s! Maybe you should buy from the shop.`)
+
+                                const notOnHandEmbed = new MessageEmbed()
+                                .setColor('#800020')
+                                .setTitle(`Sorry, ${message.member.displayName}!`)
+                                .setDescription(`You don't have that in your storage.`)
+                                .setFooter({text: `Use ~inv to see what's in your storage or ~shop to buy some!`});
+            
+                                message.channel.send({embeds: [notOnHandEmbed]});
                                 
                             } else {
     
@@ -65,7 +92,14 @@ module.exports = {
                                     }
                                 });
 
-                                message.channel.send(`You used a/an ${itemName} to help around the house and acquired ${randMBC} MBC!`)
+                                
+                               const choreSuccEmbed = new MessageEmbed()
+                               .setColor('#CD7F32')
+                               .setTitle(`Yay, ${message.member.displayName}!`)
+                               .setDescription(`You did your chores for today with a/an ${itemName} and acquired ${randMBC}!`)
+                               .setFooter({text: `Check your ~balance to confirm and ~inv to see what's in your storage!`});
+           
+                               message.channel.send({embeds: [choreSuccEmbed]});
                                 
                                 const hourTime = 1000 * 60 * 60 * 6;
 
@@ -87,7 +121,14 @@ module.exports = {
                             await inventory.findOneAndUpdate(params, data);
     
                         } else {
-                            message.channel.send(`maybe you should buy something from the shop.`)
+
+                            const noInvEmbed = new MessageEmbed()
+                            .setColor('#800020')
+                            .setTitle(`Sorry, ${message.member.displayName}!`)
+                            .setDescription(`Maybe you should buy something from the shop.`)
+                            .setFooter({text: `Use ~shop to buy something!`});
+        
+                            message.channel.send({embeds: [noInvEmbed]});
                         }
                 }
 

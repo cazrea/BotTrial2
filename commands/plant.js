@@ -85,7 +85,7 @@ module.exports = {
                                 data.inventory[itemName] -= 1;
 
                                 const growthEmbed = new MessageEmbed()
-                                .setColor('#8A9A5B')
+                                .setColor('#CD7F32')
                                 .setTitle(`Congrats, ${message.member.displayName}!`)
                                 .setDescription(`You've successfully planted a ${itemName} seed! We'll message you when it's fully grown.`)
                                 .setFooter({text: `Send ~inv to confirm and ~bal to see your current balance for when it grows!`});
@@ -125,7 +125,13 @@ module.exports = {
                             await inventory.findOneAndUpdate(params, data);
     
                         } else {
-                            message.channel.send(`maybe you should buy something from the shop.`)
+                            const noInvEmbed = new MessageEmbed()
+                            .setColor('#800020')
+                            .setTitle(`Sorry, ${message.member.displayName}!`)
+                            .setDescription(`Maybe you should buy something from the shop.`)
+                            .setFooter({text: `Use ~shop to buy something!`});
+        
+                            message.channel.send({embeds: [noInvEmbed]});
                         }
                 }
 
