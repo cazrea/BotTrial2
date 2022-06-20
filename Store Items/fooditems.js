@@ -2,8 +2,8 @@ module.exports = [
         {
                 name: 'leaves',
                 label: 'Leaves',
-                price: 5, 
-                value: 1, 
+                price: 15, 
+                value: 2, 
                 title: "food",
                 emoji: "🍂",
         },
@@ -11,8 +11,8 @@ module.exports = [
         {
                 name: 'berries',
                 label: 'Berries',
-                price: 10, 
-                value: 3,  
+                price: 35, 
+                value: 5,  
                 title: "food",
                 emoji: "🍓",
         },
@@ -20,8 +20,8 @@ module.exports = [
         {
                 name: 'fruit',
                 label: 'Fruit',
-                price: 12, 
-                value: 7, 
+                price: 65, 
+                value: 10, 
                 title: "food",
                 emoji: "🍉",
         },
@@ -29,8 +29,8 @@ module.exports = [
         {
                 name: 'salad',
                 label: 'Salad',
-                price: 15, 
-                value: 10, 
+                price: 150, 
+                value: 25, 
                 title: "food",
                 emoji: "🥗",
         },
@@ -38,26 +38,47 @@ module.exports = [
         {
                 name: 'meal',
                 label: 'Meal',
-                price: 20, 
-                value: 20, 
+                price: 275, 
+                value: 50, 
                 title: "food",
                 emoji: "🥪",
         },
-        {
-                name: 'cart',
-                label: 'Cart',
-                price: 40, 
-                value: 50, 
-                title: "food",
-                emoji: "🛒",
-        },
-        {
+
+                {
                 name: 'box',
                 label: 'Box',
-                price: 50, 
+                price: 500, 
                 value: 100, 
+                title: "food",
+                emoji: "🥡",
+        },
+
+        {
+                name: 'basket',
+                label: 'Basket',
+                price: 1125, 
+                value: 250, 
+                title: "food",
+                emoji: "🧺",
+        },
+
+        {
+                name: 'pack',
+                label: 'Pack',
+                price: 2000, 
+                value: 500, 
                 title: "food",
                 emoji: "📦",
         },
+
+        {
+                name: 'cart',
+                label: 'Cart',
+                price: 3500, 
+                value: 1000, 
+                title: "food",
+                emoji: "🛒",
+        },
+
 
 ]
