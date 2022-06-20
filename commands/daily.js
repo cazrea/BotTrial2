@@ -3,20 +3,20 @@ const { MessageEmbed, User } = require("discord.js");
 const messageCreate = require("../events/guild/messageCreate");
 const ms = require('ms');
 const inventory = require("../models/inventorySchema");
-const plantedRecently = new Set();
-const items = require("../Store Items/seeds");
+const choredRecently = new Set();
+const items = require("../Store Items/Cleaningitems");
 
 module.exports = {
-    name: 'plant',
-    aliases: ['plt', 'pt'],
+    name: 'chores',
+    aliases: ['chr', 'ch'],
     async execute(message, args, cmd, client, discord, profileData) {
 
-        if (plantedRecently.has(message.author.id)) {
+        if (choredRecently.has(message.author.id)) {
 
             const cdforEmbed = new MessageEmbed()
                     .setColor('#800020')
-                    .setTitle(`Oops! ${message.author.username} is already growing something!`)
-                    .setDescription(`Try again once they've grown. You'll know when we message you!`)
+                    .setTitle(`Oops! ${message.author.username} has already done their chores for now!`)
+                    .setDescription(`Try again in a few hours. You'll know when we message you!`)
                     .setFooter({text: 'Use ~help to check out my commands!'});
 
             message.channel.send({embeds: [cdforEmbed]});
@@ -27,12 +27,12 @@ module.exports = {
 
                 if (!itemName) {
 
-                    message.channel.send("what did you want to grow?")
+                    message.channel.send("what tool did you want to use?")
 
                 } else  
                 
                 if (!findItem) {
-                    message.channel.send("no seed of that plant exists")
+                    message.channel.send("no cleaning item like that exists")
 
                 } else {
                     const params = {
@@ -46,43 +46,39 @@ module.exports = {
         
                             if(!haveItem) {
     
-                                message.channel.send(`maybe you should buy some ${itemName} seeds from the shop.`)
+                                message.channel.send(`You don't have any ${itemName}s! Maybe you should buy from the shop.`)
     
                             } else 
                             
                             if (data.inventory[itemName] < 1) {
 
-                                message.channel.send(`maybe you should buy some ${itemName} seeds from the shop.`)
+                                message.channel.send(`You don't have any ${itemName}s! Maybe you should buy from the shop.`)
                                 
                             } else {
     
                                 data.inventory[itemName] -= 1;
-                                message.channel.send(`you planted a ${itemName} seed.`)
-                                const minuteTime = 1000 * 60 * 1;
-
-
-                            // Adds the user to the set so that they can't plant for a minute
-                                plantedRecently.add(message.author.id);
-
-                            // Removes the user from the set after a minute & sends a message
-
-
-                            var foodTimer = setTimeout(growthTimer, minuteTime);
-                            const randFood = Math.floor(Math.random() * (100-80+1)+80);
-    
-                             async function growthTimer() {
+                                const randMBC = Math.floor(Math.random() * (10000-5000+1)+5000);
                                 await profileModel.findOneAndUpdate(
                                     {userID: message.author.id},
                                     {$inc: {
-                                        food: randFood,
+                                        MBC: randMBC,
                                     }
                                 });
-                             }
+
+                                message.channel.send(`You used a/an ${itemName} to help around the house and acquired ${randMBC} MBC!`)
+                                
+                                const hourTime = 1000 * 60 * 1;
+
+
+                            // Adds the user to the set so that they can't do chores for a time
+                                choredRecently.add(message.author.id);
+
+                            // Removes the user from the set & sends a message once they can do it again
 
                              setTimeout(() => {
                                 plantedRecently.delete(message.author.id);
-                                message.author.send(`Hello! Your plant has grown and has given you ${randFood} food!`)
-                            }, minuteTime)
+                                message.author.send(`Hello! You can do chores again!`)
+                            }, hourTime)
     
                             }
     
