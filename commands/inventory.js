@@ -21,7 +21,7 @@ module.exports = {
 
             const invEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
-                    .setTitle('Checking your Storage')
+                    .setTitle(`Checking ${message.author.displayname}'s Storage`)
                     .setDescription(mappedData)
                     .setFooter({text: 'Use ~help to check out my commands!'});
 

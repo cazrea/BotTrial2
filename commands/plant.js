@@ -15,7 +15,7 @@ module.exports = {
 
             const cdforEmbed = new MessageEmbed()
                     .setColor('#800020')
-                    .setTitle(`Oops! ${message.author.username} is already growing something!`)
+                    .setTitle(`Oops! ${message.author.displayname} is already growing something!`)
                     .setDescription(`Try again once they've grown. You'll know when we message you!`)
                     .setFooter({text: 'Use ~help to check out my commands!'});
 
@@ -27,12 +27,26 @@ module.exports = {
 
                 if (!itemName) {
 
-                    message.channel.send("what did you want to grow?")
+
+                    const noItemEmbed = new MessageEmbed()
+                    .setColor('#800020')
+                    .setTitle(`Hmm...`)
+                    .setDescription(`What did you want to grow?`)
+                    .setFooter({text: 'Use ~inv to check your inventory!'});
+
+                    message.channel.send({embeds: [noItemEmbed]});
 
                 } else  
                 
                 if (!findItem) {
-                    message.channel.send("no seed of that plant exists")
+
+                    const notExistingEmbed = new MessageEmbed()
+                    .setColor('#800020')
+                    .setTitle(`Oh no!`)
+                    .setDescription(`Are you sure you're planting the right seed?`)
+                    .setFooter({text: 'Use ~shop to check available plant seeds!'});
+
+                    message.channel.send({embeds: [notExistingEmbed]});
 
                 } else {
                     const params = {
@@ -45,19 +59,39 @@ module.exports = {
                             const haveItem = Object.keys(data.inventory).includes(itemName);
         
                             if(!haveItem) {
-    
-                                message.channel.send(`maybe you should buy some ${itemName} seeds from the shop.`)
+
+                                const noItemEmbed = new MessageEmbed()
+                                .setColor('#800020')
+                                .setTitle(`Hmm...`)
+                                .setDescription(`Maybe you should buy some ${itemName} seeds from the shop.`)
+                                .setFooter({text: 'Use ~inv to check your inventory, ~shop for to check what you can buy!'});
+            
+                                message.channel.send({embeds: [noItemEmbed]});
     
                             } else 
                             
                             if (data.inventory[itemName] < 1) {
 
-                                message.channel.send(`maybe you should buy some ${itemName} seeds from the shop.`)
+                                const noItemEmbed = new MessageEmbed()
+                                .setColor('#800020')
+                                .setTitle(`Hmm...`)
+                                .setDescription(`Maybe you should buy some ${itemName} seeds from the shop.`)
+                                .setFooter({text: 'Use ~inv to check your inventory, ~shop for to check what you can buy!'});
+            
+                                message.channel.send({embeds: [noItemEmbed]});
                                 
                             } else {
     
                                 data.inventory[itemName] -= 1;
-                                message.channel.send(`you planted a ${itemName} seed.`)
+
+                                const growthEmbed = new MessageEmbed()
+                                .setColor('#8A9A5B')
+                                .setTitle(`Congrats, ${message.author.displayname}!`)
+                                .setDescription(`You've successfully planted a ${itemName} seed! We'll message you when it's fully grown.`)
+                                .setFooter({text: `Send ~inv to confirm and ~bal to see your current balance for when it grows!`});
+            
+                                message.channel.send({embeds: [growthEmbed]});
+
                                 const minuteTime = 1000 * 60 * 30;
 
 

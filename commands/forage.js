@@ -31,7 +31,7 @@ module.exports = {
 
             const cdforEmbed = new MessageEmbed()
                     .setColor('#800020')
-                    .setTitle(`Oops! ${message.author.username} send that too fast!`)
+                    .setTitle(`Oops! ${message.author.displayname} send that too fast!`)
                     .setDescription(`Try again in 5 seconds`)
                     .setFooter({text: 'Use ~help to check out my commands!'});
 
@@ -52,7 +52,7 @@ module.exports = {
 
                 const forageEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
-                    .setTitle(`Looking for some 🧫 Micro Brain Cells for ${message.author.username}...`)
+                    .setTitle(`Looking for some 🧫 Micro Brain Cells for ${message.author.displayname}...`)
                     .setDescription(`You found some ${forageResult.name} and got ${forageResult.value} 🧫MBC.`)
                     .setFooter({text: 'Use ~help to check out my commands!'});
 

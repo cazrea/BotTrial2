@@ -78,7 +78,13 @@ module.exports = {
                         }
                     });
         
-                    message.channel.send('success sent');
+                    const dBCSuccEmbed = new MessageEmbed()
+                    .setColor('#CD7F32')
+                    .setTitle(`Congrats, ${message.author.displayname}!`)
+                    .setDescription(`You've successfully given 🧫${amount} Brain Cells to ${target.displayname}!`)
+                    .setFooter({text: 'Check your ~balance to confirm.'});
+
+                    message.channel.send({embeds: [dBCSuccEmbed]});   
     
                 }
         

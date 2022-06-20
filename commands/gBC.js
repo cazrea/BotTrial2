@@ -11,7 +11,7 @@ module.exports = {
             const whodisEmbed = new MessageEmbed()
                 .setColor('#800020')
                 .setTitle('???')
-                .setDescription('Who do you want to give this to?')
+                .setDescription(`Who is this for, ${message.author.displayname}?`)
                 .setFooter({text: 'Try tagging the person.'});
 
             message.channel.send({embeds: [whodisEmbed]});
@@ -25,7 +25,7 @@ module.exports = {
 
             const noPersEmbed = new MessageEmbed()
                 .setColor('#800020')
-                .setTitle('Oops!')
+                .setTitle(`Oops, ${message.author.displayname}!`)
                 .setDescription('That person is not around!')
                 .setFooter({text: `Try giving it to someone that's here.`});
 
@@ -36,7 +36,7 @@ module.exports = {
                 .setColor('#800020')
                 .setTitle('Oops! The transaction went wrong!')
                 .setDescription('The number must be a whole number!')
-                .setFooter({text: 'Try sending again.'});
+                .setFooter({text: `Try sending again, ${message.author.displayname}.`});
 
             message.channel.send({embeds: [notAWholeNumEmbed]});
         } else {
@@ -46,7 +46,7 @@ module.exports = {
     
                     const notPersEmbed = new MessageEmbed()
                         .setColor('#800020')
-                        .setTitle('Oops!')
+                        .setTitle(`Sorry, ${message.author.displayname}!`)
                         .setDescription(`That's not a person I know!`)
                         .setFooter({text: `Try giving it to someone that's here.`});
         
@@ -55,7 +55,7 @@ module.exports = {
                 } else if (amount > profileData.BC) {
                     const tooManyEmbed = new MessageEmbed()
                         .setColor('#800020')
-                        .setTitle(`Oh no, you don't have that many 🦠Brain Cells!`)
+                        .setTitle(`Oh no, ${message.author.displayname} doesn't have that many 🦠Brain Cells!`)
                         .setDescription(`You currently have 🦠${profileData.BC} Brain Cell/s available to give.`)
                         .setFooter({text: 'Try sending again.'});
     
@@ -78,7 +78,13 @@ module.exports = {
                         }
                     });
         
-                    message.channel.send('success sent');
+                    const dBCSuccEmbed = new MessageEmbed()
+                    .setColor('#CD7F32')
+                    .setTitle(`Congrats, ${message.author.displayname}!`)
+                    .setDescription(`You've successfully given 🦠${amount} Brain Cells to ${target.displayname}!`)
+                    .setFooter({text: 'Check your ~balance to confirm.'});
+
+                    message.channel.send({embeds: [dBCSuccEmbed]});   
     
                 }
         

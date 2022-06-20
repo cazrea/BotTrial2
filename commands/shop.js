@@ -47,7 +47,7 @@ module.exports = {
 
             const shopEmbed = new MessageEmbed()
                 .setColor('#CD7F32')
-                .setTitle('Welcome to my shop!')
+                .setTitle(`Welcome to my shop, ${message.author.displayname}!`)
                 .setDescription("Here are the available items!")
                 .addFields(
                     {

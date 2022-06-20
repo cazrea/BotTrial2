@@ -19,7 +19,7 @@ module.exports = {
             const  noItemEmbed = new MessageEmbed()
                 .setColor('#800020')
                 .setTitle('Hmm...')
-                .setDescription(`What did you wanna buy?`)
+                .setDescription(`What did you wanna buy, ${message.author.displayname}?`)
                 .setFooter({text: 'Check the ~shop list!'});
 
             message.channel.send({embeds: [noItemEmbed]});
@@ -31,7 +31,7 @@ module.exports = {
             const  noQtyEmbed = new MessageEmbed()
                 .setColor('#800020')
                 .setTitle('Hmm...')
-                .setDescription(`How many did you wanna buy?`)
+                .setDescription(`How many did you wanna buy, ${message.author.displayname}?`)
                 .setFooter({text: 'Start from 1!'});
 
             message.channel.send({embeds: [noQtyEmbed]});
@@ -46,7 +46,7 @@ module.exports = {
                 const  noExistEmbed = new MessageEmbed()
                     .setColor('#800020')
                     .setTitle('Hmm...')
-                    .setDescription(`I don't think that's available.`)
+                    .setDescription(`I don't think that's available, ${message.author.displayname}.`)
                     .setFooter({text: 'Check the ~shop list!'});
 
                 message.channel.send({embeds: [noExistEmbed]});
@@ -79,7 +79,7 @@ module.exports = {
 
                     const  boughtEmbed = new MessageEmbed()
                         .setColor('#CD7F32')
-                        .setTitle('Congrats!')
+                        .setTitle(`Congrats, ${message.author.displayname}!`)
                         .setDescription(`You bought ${itemName} for 🧫${itemTotal}!`)
                         .setFooter({text: 'Please check how much food you have by typing ~bal!'});
 

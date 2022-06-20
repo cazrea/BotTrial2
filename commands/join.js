@@ -7,7 +7,7 @@ module.exports = {
     execute(message, args, cmd, client, Discord, profileData) {      
         const welcEmbed = new MessageEmbed()
           .setColor('#CD7F32')
-          .setTitle('Hello!')
+          .setTitle(`Hello, ${message.author.displayname}!`)
           .setDescription("Any command will make you an account for now!")
           .setFooter({text: 'Use ~help to check out my commands!'});
 

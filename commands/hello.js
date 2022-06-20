@@ -28,11 +28,11 @@ module.exports = {
 
       const hiEmbed = new MessageEmbed()
       .setColor('#CD7F32')
-      .setTitle(`Hello, thanks for inviting me!`)
+      .setTitle(`Hello, ${message.author.displayname}!`)
       .setDescription(greetings[randGreet])
       .addFields(
         {name: 'Remember:', value: 'Start every command with the Tilde (~) symbol.'},
-        {name: 'Check your Brain Cells', value: 'Type ~bal to check how many you have!'},
+        {name: 'Check your Brain Cells & Food', value: 'Type ~bal to check how many you have!'},
     )
       .setFooter({text: 'Use ~help to check out my other commands!'});
 
