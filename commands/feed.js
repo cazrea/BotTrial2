@@ -65,7 +65,7 @@ module.exports = {
         if (!time && !animalQty) {
                 const nobothEmbed = new MessageEmbed()
                     .setColor('#800020')
-                    .setTitle(`Please fill up Autofeeders, ${message.member.displayname}!`)
+                    .setTitle(`Please fill up Autofeeders, ${message.member.displayName}!`)
                     .setDescription('How much food you give and how long for?')
                     .setFooter({text: 'Use ~feed (time in seconds) (how many portions)'});
                 message.channel.send({embeds:[nobothEmbed]});
@@ -74,7 +74,7 @@ module.exports = {
             if (!time || isNaN(time)) {
                 const noTimeEmbed = new MessageEmbed()
                     .setColor('#800020')
-                    .setTitle(`Please fill up Autofeeders, ${message.member.displayname}!`)
+                    .setTitle(`Please fill up Autofeeders, ${message.member.displayName}!`)
                     .setDescription('How often will the autofeeders give food?')
                     .setFooter({text: 'Use ~feed (time in seconds) (how many portions)'});
                 message.channel.send({embeds:[noTimeEmbed]});
@@ -83,7 +83,7 @@ module.exports = {
             if (!animalQty || isNaN(animalQty)) {         
                 const noqtyEmbed = new MessageEmbed()
                     .setColor('#800020')
-                    .setTitle(`Please fill up Autofeeders, ${message.member.displayname}!`)
+                    .setTitle(`Please fill up Autofeeders, ${message.member.displayName}!`)
                     .setDescription('How much food you give?')
                     .setFooter({text: 'Use ~feed (time in seconds) (how many portions)'});
 
@@ -93,7 +93,7 @@ module.exports = {
             if (animalQty > profileData.food) {
                 const noEnfoodEmbed = new MessageEmbed()
                     .setColor('#800020')
-                    .setTitle(`Please buy food, ${message.member.displayname}!`)
+                    .setTitle(`Please buy food, ${message.member.displayName}!`)
                     .setDescription(`You tried to fill the autofeeder with 🥮${animalQty} food, but only have 🥮${profileData.food} available.`)
                     .setFooter({text: 'Use ~shop to buy more!'});
 
@@ -118,10 +118,10 @@ module.exports = {
 
                     const spawnAnimal = new MessageEmbed()
                     .setColor(wildColors[randomClr])
-                    .setTitle(`A New Visitor for ${message.member.displayname} has Arrived`)
+                    .setTitle(`A New Visitor for ${message.member.displayName} has Arrived`)
                     .setDescription(Description[randomAnimal])
                     .setImage(animalpics[randomDesc])
-                    .setFooter({text: `Congrats! ${message.member.displayname} gained 🧫${randMBC} MBC!`});
+                    .setFooter({text: `Congrats! ${message.member.displayName} gained 🧫${randMBC} MBC!`});
 
                     message.channel.send({embeds:[spawnAnimal]}); 
 
@@ -138,7 +138,7 @@ module.exports = {
                         clearInterval(animalInterval);
                         const noFood = new MessageEmbed ()
                         .setColor('#800020')
-                        .setTitle(`The feeder is empty, ${message.member.displayname}!`)
+                        .setTitle(`The feeder is empty, ${message.member.displayName}!`)
                         .setDescription(`Please refill the feeder.`)
                         .setFooter({text: 'Use ~feed (time in s) (portions) again.'});
                         

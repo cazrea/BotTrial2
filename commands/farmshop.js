@@ -19,7 +19,7 @@ module.exports = {
             const  noItemEmbed = new MessageEmbed()
                 .setColor('#800020')
                 .setTitle('Hmm...')
-                .setDescription(`What did you wanna buy, ${message.member.displayname}?`)
+                .setDescription(`What did you wanna buy, ${message.member.displayName}?`)
                 .setFooter({text: 'Check the ~shop list!'});
 
             message.channel.send({embeds: [noItemEmbed]});
@@ -31,7 +31,7 @@ module.exports = {
             const  noQtyEmbed = new MessageEmbed()
                 .setColor('#800020')
                 .setTitle('Hmm...')
-                .setDescription(`How many did you wanna buy, ${message.member.displayname}?`)
+                .setDescription(`How many did you wanna buy, ${message.member.displayName}?`)
                 .setFooter({text: 'Start from 1!'});
 
             message.channel.send({embeds: [noQtyEmbed]});
@@ -47,7 +47,7 @@ module.exports = {
                 const  noExistEmbed = new MessageEmbed()
                     .setColor('#800020')
                     .setTitle('Hmm...')
-                    .setDescription(`I don't think that's available, ${message.member.displayname}.`)
+                    .setDescription(`I don't think that's available, ${message.member.displayName}.`)
                     .setFooter({text: 'Check the ~shop list!'});
 
                 message.channel.send({embeds: [noExistEmbed]});
@@ -60,7 +60,7 @@ module.exports = {
 
                     const  notEnoughEmbed = new MessageEmbed()
                         .setColor('#800020')
-                        .setTitle(`Oh no, ${message.member.displayname}!`)
+                        .setTitle(`Oh no, ${message.member.displayName}!`)
                         .setDescription(`You don't have enough 🧫MBC for this! You only have 🧫${profileData.MBC} but needed 🧫${itemTotal}...`)
                         .setFooter({text: 'Check your ~bal!'});
 
@@ -106,7 +106,7 @@ module.exports = {
 
                         const  boughtEmbed = new MessageEmbed()
                         .setColor('#CD7F32')
-                        .setTitle(`Congrats, ${message.member.displayname}!`)
+                        .setTitle(`Congrats, ${message.member.displayName}!`)
                         .setDescription(`You bought ${itemName} seeds (x${farmQty}) for 🧫${itemTotal}!`)
                         .setFooter({text: 'Please check your inventory by typing ~inv!'});
 

@@ -15,7 +15,7 @@ module.exports = {
 
             const cdforEmbed = new MessageEmbed()
                     .setColor('#800020')
-                    .setTitle(`Oops! ${message.member.displayname} is already growing something!`)
+                    .setTitle(`Oops! ${message.member.displayName} is already growing something!`)
                     .setDescription(`Try again once they've grown. You'll know when we message you!`)
                     .setFooter({text: 'Use ~help to check out my commands!'});
 
@@ -31,7 +31,7 @@ module.exports = {
                     const noItemEmbed = new MessageEmbed()
                     .setColor('#800020')
                     .setTitle(`Hmm...`)
-                    .setDescription(`What did you want to grow, ${message.member.displayname}?`)
+                    .setDescription(`What did you want to grow, ${message.member.displayName}?`)
                     .setFooter({text: 'Use ~inv to check your inventory!'});
 
                     message.channel.send({embeds: [noItemEmbed]});
@@ -42,7 +42,7 @@ module.exports = {
 
                     const notExistingEmbed = new MessageEmbed()
                     .setColor('#800020')
-                    .setTitle(`Oh no, ${message.member.displayname}!`)
+                    .setTitle(`Oh no, ${message.member.displayName}!`)
                     .setDescription(`Are you sure you're planting the right seed?`)
                     .setFooter({text: 'Use ~shop to check available plant seeds!'});
 
@@ -63,7 +63,7 @@ module.exports = {
                                 const noItemEmbed = new MessageEmbed()
                                 .setColor('#800020')
                                 .setTitle(`Hmm...`)
-                                .setDescription(`Maybe you should buy some ${itemName} seeds from the shop, ${message.member.displayname}.`)
+                                .setDescription(`Maybe you should buy some ${itemName} seeds from the shop, ${message.member.displayName}.`)
                                 .setFooter({text: 'Use ~inv to check your inventory, ~shop for to check what you can buy!'});
             
                                 message.channel.send({embeds: [noItemEmbed]});
@@ -75,7 +75,7 @@ module.exports = {
                                 const noItemEmbed = new MessageEmbed()
                                 .setColor('#800020')
                                 .setTitle(`Hmm...`)
-                                .setDescription(`Maybe you should buy some ${itemName} seeds from the shop, ${message.member.displayname}.`)
+                                .setDescription(`Maybe you should buy some ${itemName} seeds from the shop, ${message.member.displayName}.`)
                                 .setFooter({text: 'Use ~inv to check your inventory, ~shop for to check what you can buy!'});
             
                                 message.channel.send({embeds: [noItemEmbed]});
@@ -86,7 +86,7 @@ module.exports = {
 
                                 const growthEmbed = new MessageEmbed()
                                 .setColor('#8A9A5B')
-                                .setTitle(`Congrats, ${message.member.displayname}!`)
+                                .setTitle(`Congrats, ${message.member.displayName}!`)
                                 .setDescription(`You've successfully planted a ${itemName} seed! We'll message you when it's fully grown.`)
                                 .setFooter({text: `Send ~inv to confirm and ~bal to see your current balance for when it grows!`});
             

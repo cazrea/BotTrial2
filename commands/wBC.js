@@ -11,7 +11,7 @@ module.exports = {
         if (amount % 1 != 0 || amount <= 0) {
             const notAWholewwNumEmbed = new MessageEmbed()
                 .setColor('#800020')
-                .setTitle(`Oops, ${message.member.displayname}! The transaction went wrong!`)
+                .setTitle(`Oops, ${message.member.displayName}! The transaction went wrong!`)
                 .setDescription('The number must be a whole number!')
                 .setFooter({text: 'Try withdrawing again.'});
 
@@ -21,7 +21,7 @@ module.exports = {
             else if (amount > profileData.bank) {
                 const tooManywwEmbed = new MessageEmbed()
                     .setColor('#800020')
-                    .setTitle(`Oh no, ${message.member.displayname} doen't have that many 🦠Brain Cells!`)
+                    .setTitle(`Oh no, ${message.member.displayName} doen't have that many 🦠Brain Cells!`)
                     .setDescription(`You currently have ${profileData.bank} Brain Cell/s available to withdraw.`)
                     .setFooter({text: 'Try withdrawing again.'});
 
@@ -39,7 +39,7 @@ module.exports = {
     
                 const dBSSuccEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
-                    .setTitle(`Congrats, ${message.member.displayname}!`)
+                    .setTitle(`Congrats, ${message.member.displayName}!`)
                     .setDescription(`You've successfully withdrawn 🦠${amount} Brain Cells from the Brain Bank!`)
                     .setFooter({text: 'Check your ~balance to confirm.'});
 

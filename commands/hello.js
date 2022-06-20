@@ -28,7 +28,7 @@ module.exports = {
 
       const hiEmbed = new MessageEmbed()
       .setColor('#CD7F32')
-      .setTitle(`Hello, ${message.member.displayname}!`)
+      .setTitle(`Hello, ${message.member.displayName}!`)
       .setDescription(greetings[randGreet])
       .addFields(
         {name: 'Remember:', value: 'Start every command with the Tilde (~) symbol.'},

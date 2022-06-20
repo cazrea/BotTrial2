@@ -21,7 +21,7 @@ module.exports = {
             else if (amount > profileData.BrainCells) {
                 const tooManyBEmbed = new MessageEmbed()
                     .setColor('#800020')
-                    .setTitle(`Oh no, ${message.member.displayname} doesn't have that many Brain Cells!`)
+                    .setTitle(`Oh no, ${message.member.displayName} doesn't have that many Brain Cells!`)
                     .setDescription(`You currently have 🦠${profileData.BrainCells} Brain Cell/s available to deposit.`)
                     .setFooter({text: 'Try depositing again.'});
 
@@ -39,7 +39,7 @@ module.exports = {
     
                 const dBSSuccEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
-                    .setTitle(`Congrats, ${message.member.displayname}!`)
+                    .setTitle(`Congrats, ${message.member.displayName}!`)
                     .setDescription(`You've successfully deposited  🦠${amount} Brain Cells into the Brain Bank!`)
                     .setFooter({text: 'Check your ~balance to confirm.'});
 

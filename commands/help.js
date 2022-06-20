@@ -74,8 +74,10 @@ module.exports = {
             {name: '~balance, ~bal, ~bl', value: 'Checks how much MBC, BC and Food you have on hand and in your brain bank.'},
             {name: '~dm, ~dmbc, ~depositmbc', value: 'Deposit Micro Brain Cells 🧫 to the Brain Bank.'},
             {name: '~wm, ~wmbc, ~withdrawmbc', value: 'Withdraw Micro Brain Cells 🧫 to the Brain Bank.'},
+            {name: '~givembc @person amount', value: 'Give someone Micro Brain Cells 🧫, can use ~gmbc or ~gm'},
             {name: '~db, ~dbc, ~depositbc', value: 'Deposit Brain Cells 🦠 to the Brain Bank.'},
-            {name: '~wb, ~wbc, ~withdrawbc', value: 'Withdraw Brain Cells 🦠 to the Brain Bank.'},
+            {name: '~wb, ~wbc, ~withdrawbc', value: 'Withdraw Brain Cells 🦠 to the Brain Bank.'},   
+            {name: '~givebc @person amount', value: 'Give someone Brain Cells 🦠, can use ~gbc or ~gb'},
         )
         .setFooter({text: 'Remember to always put ~ before the command!'});
 

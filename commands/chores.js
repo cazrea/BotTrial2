@@ -15,7 +15,7 @@ module.exports = {
 
             const cdforEmbed = new MessageEmbed()
                     .setColor('#800020')
-                    .setTitle(`Oops! ${message.member.username} has already done their chores for now!`)
+                    .setTitle(`Oops! ${message.member.displayName} has already done their chores for now!`)
                     .setDescription(`Try again in a few hours. You'll know when we message you!`)
                     .setFooter({text: 'Use ~help to check out my commands!'});
 

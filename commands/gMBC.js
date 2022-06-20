@@ -11,7 +11,7 @@ module.exports = {
             const whodisEmbed = new MessageEmbed()
                 .setColor('#800020')
                 .setTitle('???')
-                .setDescription(`Who do you want to give this to, ${message.member.displayname}?`)
+                .setDescription(`Who do you want to give this to, ${message.member.displayName}?`)
                 .setFooter({text: 'Try tagging the person.'});
 
             message.channel.send({embeds: [whodisEmbed]});
@@ -26,7 +26,7 @@ module.exports = {
             const noPersEmbed = new MessageEmbed()
                 .setColor('#800020')
                 .setTitle('Oops!')
-                .setDescription(`That person is not around, ${message.member.displayname}!`)
+                .setDescription(`That person is not around, ${message.member.displayName}!`)
                 .setFooter({text: `Try giving it to someone that's here.`});
 
             message.channel.send({embeds: [noPersEmbed]});
@@ -34,7 +34,7 @@ module.exports = {
         } else if (amount % 1 != 0 || amount <= 0) {
             const notAWholeNumEmbed = new MessageEmbed()
                 .setColor('#800020')
-                .setTitle('Oops! The transaction went wrong!')
+                .setTitle(`Oops! The transaction went wrong, ${message.member.displayName}!`)
                 .setDescription('The number must be a whole number!')
                 .setFooter({text: 'Try sending again.'});
 
@@ -47,7 +47,7 @@ module.exports = {
                     const notPersEmbed = new MessageEmbed()
                         .setColor('#800020')
                         .setTitle('Oops!')
-                        .setDescription(`That's not a person I know, ${message.member.displayname}!`)
+                        .setDescription(`That's not a person I know, ${message.member.displayName}!`)
                         .setFooter({text: `Try giving it to someone that's here.`});
         
                     message.channel.send({embeds: [notPersEmbed]});
@@ -55,7 +55,7 @@ module.exports = {
                 } else if (amount > profileData.MBC) {
                     const tooManyEmbed = new MessageEmbed()
                         .setColor('#800020')
-                        .setTitle(`Oh no, ${message.member.displayname} doen't have that many Micro Brain Cells!`)
+                        .setTitle(`Oh no, ${message.member.displayName} doen't have that many Micro Brain Cells!`)
                         .setDescription(`You currently have 🧫${profileData.MBC} Micro Brain Cell/s available to give.`)
                         .setFooter({text: 'Try sending again.'});
     
@@ -80,8 +80,8 @@ module.exports = {
         
                     const dBCSuccEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
-                    .setTitle(`Congrats, ${message.member.displayname}!`)
-                    .setDescription(`You've successfully given 🧫${amount} Brain Cells to @${target}!`)
+                    .setTitle(`Congrats, ${message.member.displayName}!`)
+                    .setDescription(`You've successfully given 🧫${amount} Brain Cells to ${target}!`)
                     .setFooter({text: 'Check your ~balance to confirm.'});
 
                     message.channel.send({embeds: [dBCSuccEmbed]});   
