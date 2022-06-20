@@ -54,7 +54,6 @@ module.exports = {
 
             } else {
                 const itemPrice = items.find((item) => (item.name.toLowerCase()) === itemName).price;
-
                 var itemTotal = itemPrice * farmQty;
 
                 if (itemTotal > profileData.MBC) {
@@ -80,11 +79,11 @@ module.exports = {
         
                             if(!haveItem) {
     
-                                data.inventory[itemName] = farmQty;
+                                data.inventory[itemName] = parseInt(farmQty);
     
                             } else {
     
-                                data.inventory[itemName] + farmQty;
+                                data.inventory[itemName] += parseInt(farmQty);
     
                             }
     
@@ -99,7 +98,7 @@ module.exports = {
                                 User: message.author.id,
                                
                                 inventory:{
-                                    [itemName]: farmQty,
+                                    [itemName]: parseInt(farmQty),
                                 },
                                     
                             }).save();
@@ -108,7 +107,7 @@ module.exports = {
                         const  boughtEmbed = new MessageEmbed()
                         .setColor('#CD7F32')
                         .setTitle('Congrats!')
-                        .setDescription(`You bought ${itemName} ${value.title} (x${farmQty}) for 🧫${itemTotal}!`)
+                        .setDescription(`You bought ${itemName} seeds (x${farmQty}) for 🧫${itemTotal}!`)
                         .setFooter({text: 'Please check your inventory by typing ~inv!'});
 
                         message.channel.send({embeds: [boughtEmbed]});
