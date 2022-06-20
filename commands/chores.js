@@ -57,7 +57,7 @@ module.exports = {
                             } else {
     
                                 data.inventory[itemName] -= 1;
-                                const randMBC = Math.floor(Math.random() * (10000-5000+1)+5000);
+                                const randMBC = Math.floor(Math.random() * (7000-5000+1)+5000);
                                 await profileModel.findOneAndUpdate(
                                     {userID: message.author.id},
                                     {$inc: {
@@ -67,7 +67,7 @@ module.exports = {
 
                                 message.channel.send(`You used a/an ${itemName} to help around the house and acquired ${randMBC} MBC!`)
                                 
-                                const hourTime = 1000 * 60 * 1;
+                                const hourTime = 1000 * 60 * 60 * 6;
 
 
                             // Adds the user to the set so that they can't do chores for a time

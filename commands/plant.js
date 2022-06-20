@@ -58,7 +58,7 @@ module.exports = {
     
                                 data.inventory[itemName] -= 1;
                                 message.channel.send(`you planted a ${itemName} seed.`)
-                                const minuteTime = 1000 * 60 * 1;
+                                const minuteTime = 1000 * 60 * 30;
 
 
                             // Adds the user to the set so that they can't plant for a minute
