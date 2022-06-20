@@ -11,7 +11,7 @@ module.exports = {
             const whodisEmbed = new MessageEmbed()
                 .setColor('#800020')
                 .setTitle('???')
-                .setDescription('Who do you want to give this to?')
+                .setDescription(`Who do you want to give this to, ${message.member.displayname}?`)
                 .setFooter({text: 'Try tagging the person.'});
 
             message.channel.send({embeds: [whodisEmbed]});
@@ -26,7 +26,7 @@ module.exports = {
             const noPersEmbed = new MessageEmbed()
                 .setColor('#800020')
                 .setTitle('Oops!')
-                .setDescription('That person is not around!')
+                .setDescription(`That person is not around, ${message.member.displayname}!`)
                 .setFooter({text: `Try giving it to someone that's here.`});
 
             message.channel.send({embeds: [noPersEmbed]});
@@ -47,7 +47,7 @@ module.exports = {
                     const notPersEmbed = new MessageEmbed()
                         .setColor('#800020')
                         .setTitle('Oops!')
-                        .setDescription(`That's not a person I know!`)
+                        .setDescription(`That's not a person I know, ${message.member.displayname}!`)
                         .setFooter({text: `Try giving it to someone that's here.`});
         
                     message.channel.send({embeds: [notPersEmbed]});
@@ -55,7 +55,7 @@ module.exports = {
                 } else if (amount > profileData.MBC) {
                     const tooManyEmbed = new MessageEmbed()
                         .setColor('#800020')
-                        .setTitle(`Oh no, you don't have that many Micro Brain Cells!`)
+                        .setTitle(`Oh no, ${message.member.displayname} doen't have that many Micro Brain Cells!`)
                         .setDescription(`You currently have 🧫${profileData.MBC} Micro Brain Cell/s available to give.`)
                         .setFooter({text: 'Try sending again.'});
     
@@ -80,8 +80,8 @@ module.exports = {
         
                     const dBCSuccEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
-                    .setTitle(`Congrats, ${message.author.displayname}!`)
-                    .setDescription(`You've successfully given 🧫${amount} Brain Cells to ${target.displayname}!`)
+                    .setTitle(`Congrats, ${message.member.displayname}!`)
+                    .setDescription(`You've successfully given 🧫${amount} Brain Cells to @${target}!`)
                     .setFooter({text: 'Check your ~balance to confirm.'});
 
                     message.channel.send({embeds: [dBCSuccEmbed]});   

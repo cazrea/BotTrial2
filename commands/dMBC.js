@@ -11,7 +11,7 @@ module.exports = {
         if (amount % 1 != 0 || amount <= 0) {
             const notAWholeNumEmbed = new MessageEmbed()
                 .setColor('#800020')
-                .setTitle('Oops! The transaction went wrong!')
+                .setTitle(`Oops, ${message.member.displayname}! The transaction went wrong!`)
                 .setDescription('The number must be a whole number!')
                 .setFooter({text: 'Try depositing again.'});
 
@@ -21,7 +21,7 @@ module.exports = {
             else if (amount > profileData.MBC) {
                 const tooManyEmbed = new MessageEmbed()
                     .setColor('#800020')
-                    .setTitle(`Oh no, ${message.author.displayname} does't have that many Micro Brain Cells!`)
+                    .setTitle(`Oh no, ${message.member.displayname} does't have that many Micro Brain Cells!`)
                     .setDescription(`You currently have 🧫${profileData.MBC} Micro Brain Cell/s available to deposit.`)
                     .setFooter({text: 'Try depositing again.'});
 
@@ -39,7 +39,7 @@ module.exports = {
     
                 const dMSuccEmbed = new MessageEmbed()
                     .setColor('#CD7F32')
-                    .setTitle(`Congrats, ${message.author.displayname}!`)
+                    .setTitle(`Congrats, ${message.member.displayname}!`)
                     .setDescription(`You've successfully deposited 🧫${amount} Micro Brain Cells into the Brain Bank!`)
                     .setFooter({text: 'Check your ~balance to confirm.'});
 

@@ -9,7 +9,7 @@ module.exports = {
     execute(message, args, cmd, client, discord, profileData) {
         const balEmbed = new MessageEmbed()
           .setColor('#CD7F32')
-          .setTitle(`Checking ${message.author.displayname}'s Brain Bank™`)
+          .setTitle(`Checking ${message.member.displayName}'s Brain Bank™`)
           .addFields(
             {name: 'Micro Brain Cells', value: `You have 🧫${profileData.MBC} Micro Brain Cells on you and 🧫${profileData.MBBank} stored.`},
             {name: 'Brain Cells', value: `You have 🦠${profileData.BrainCells} Brain Cells on you and 🦠${profileData.bank} stored.`},

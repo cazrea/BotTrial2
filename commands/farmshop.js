@@ -19,7 +19,7 @@ module.exports = {
             const  noItemEmbed = new MessageEmbed()
                 .setColor('#800020')
                 .setTitle('Hmm...')
-                .setDescription(`What did you wanna buy?`)
+                .setDescription(`What did you wanna buy, ${message.member.displayname}?`)
                 .setFooter({text: 'Check the ~shop list!'});
 
             message.channel.send({embeds: [noItemEmbed]});
@@ -31,7 +31,7 @@ module.exports = {
             const  noQtyEmbed = new MessageEmbed()
                 .setColor('#800020')
                 .setTitle('Hmm...')
-                .setDescription(`How many did you wanna buy?`)
+                .setDescription(`How many did you wanna buy, ${message.member.displayname}?`)
                 .setFooter({text: 'Start from 1!'});
 
             message.channel.send({embeds: [noQtyEmbed]});
@@ -47,7 +47,7 @@ module.exports = {
                 const  noExistEmbed = new MessageEmbed()
                     .setColor('#800020')
                     .setTitle('Hmm...')
-                    .setDescription(`I don't think that's available.`)
+                    .setDescription(`I don't think that's available, ${message.member.displayname}.`)
                     .setFooter({text: 'Check the ~shop list!'});
 
                 message.channel.send({embeds: [noExistEmbed]});
@@ -60,7 +60,7 @@ module.exports = {
 
                     const  notEnoughEmbed = new MessageEmbed()
                         .setColor('#800020')
-                        .setTitle(`Oh no, ${message.author.displayname}!`)
+                        .setTitle(`Oh no, ${message.member.displayname}!`)
                         .setDescription(`You don't have enough 🧫MBC for this! You only have 🧫${profileData.MBC} but needed 🧫${itemTotal}...`)
                         .setFooter({text: 'Check your ~bal!'});
 
@@ -106,7 +106,7 @@ module.exports = {
 
                         const  boughtEmbed = new MessageEmbed()
                         .setColor('#CD7F32')
-                        .setTitle(`Congrats, ${message.author.displayname}!`)
+                        .setTitle(`Congrats, ${message.member.displayname}!`)
                         .setDescription(`You bought ${itemName} seeds (x${farmQty}) for 🧫${itemTotal}!`)
                         .setFooter({text: 'Please check your inventory by typing ~inv!'});
 
